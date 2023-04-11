@@ -1,0 +1,1 @@
+python -u train_office.py --multi_input --dataset_path office-31 --weighting MGDA --gpu_id 0 > train_logs/mgda_init.out &

@@ -1,0 +1,5 @@
+04-10-2022 14.41
+RUN: (libmtl) hdf@JEC-2318-07:~/hdf/MoDo/LibMTL/examples/office$ python train_office.py --multi_input --dataset_path office-31 --gpu_id 2
+ERROR: RuntimeError: cuDNN error: CUDNN_STATUS_NOT_INITIALIZED
+FIX: pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+possible cause: Nvidia driver version (470.182.03) not compatible with cuda version used (10.2)

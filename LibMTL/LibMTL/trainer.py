@@ -211,7 +211,6 @@ class Trainer(nn.Module):
                 else:
                     # double sample if MoDo
                     if self.kwargs['weight_args']['weighting'] == 'MoDo':
-                        # TODO: Add double sampling for MoDo
                         # init 2 sample collector (different from train_losses for other methods)
                         train_losses = []
                         # collect two independant samples

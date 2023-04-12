@@ -144,21 +144,20 @@ class MoCo(AbsWeighting):
         
         # get loss values for normalizing
         loss_data = torch.tensor([loss.item() for loss in losses]).to(self.device)
+
         # normalize y before update lambda
-
-
-        # y = self._gradient_normalizers(self.y, loss_data, ntype=moco_gn) # l2, loss, loss+, none This take a lot of time
+        y = self._gradient_normalizers(self.y, loss_data, ntype=moco_gn) # l2, loss, loss+, none
 
         # print('lambda device:', self.lambd.shape, 'y shape:', self.y.shape) # REMOVE
 
         # lambda update
-        self.lambd = self._projection2simplex( self.lambd - gamma_moco * ( self.y @ (torch.transpose(self.y, 0, 1) @ self.lambd ) + rho_moco * self.lambd ) )
+        self.lambd = self._projection2simplex( self.lambd - gamma_moco * ( y @ (torch.transpose(y, 0, 1) @ self.lambd ) + rho_moco * self.lambd ) )
         # if exactly solving (not used, at least now): self.lambda = self._find_min_norm_element(y)
 
         # update x (model) with Y@lambd
         if self.rep_grad: # assuming False (for now)
             self._backward_new_grads(self.lambd, per_grads=per_grads)
         else:
-            self._backward_new_grads(self.lambd, grads=self.y)
+            self._backward_new_grads(self.lambd, grads=y)
 
         return self.lambd.detach().cpu().numpy()

@@ -1,0 +1,26 @@
+========================================
+General Configuration:
+	Wighting: MoCo
+	Architecture: HPS
+	Rep_Grad: False
+	Multi_Input: True
+	Seed: 0
+	Device: cuda:0
+MoCo Configuration:
+	beta_moco: 0.1
+	gamma_moco: 0.1
+	rho_moco: 0.1
+	moco_gn: none
+Optimizer Configuration:
+	optim: adam
+	lr: 0.0001
+	weight_decay: 1e-05
+========================================
+Total Params: 11487901
+Trainable Params: 11487901
+Non-trainable Params: 0
+========================================
+LOG FORMAT | amazon_LOSS Acc | dslr_LOSS Acc | webcam_LOSS Acc | TIME
+Epoch: 0000 | TRAIN: 2.5688 0.3846 | 1.8305 0.7260 | 1.9782 0.6382 | Time: 39.7423 | VAL: 1.7389 0.6920 | 1.1473 0.9438 | 1.2185 0.8725 | Time: 2.4097 | TEST: 1.7243 0.6957 | 1.1652 0.9180 | 1.3053 0.8500 | Time: 2.8446
+Epoch: 0001 | TRAIN: 1.4254 0.7560 | 0.5049 0.9964 | 0.6474 0.9850 | Time: 39.0883 | VAL: 1.5103 0.7554 | 0.6701 1.0000 | 0.7854 0.9664 | Time: 2.4151 | TEST: 1.5108 0.7487 | 0.8107 0.9590 | 0.8787 0.9611 | Time: 2.8747
+Epoch: 0002 | TRAIN: 1.0436 0.8474 | 0.2101 1.0000 | 0.3027 0.9988 | Time: 39.1342 | 

@@ -1,1 +1,1 @@
-python -u train_office.py --multi_input --dataset_path office-31 --weighting MoCo --gpu_id 0 2>&1 >> train_logs/moco_y_normalize_run_time_test.out &
+python -u train_office.py --multi_input --dataset_path office-31 --weighting MoCo --rho_moco 0 --gpu_id 0 2>&1 >> train_logs/moco_rho_0_test.out &

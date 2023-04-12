@@ -79,6 +79,8 @@ def prepare_args(params):
     if params.weighting in ['EW', 'UW', 'GradNorm', 'GLS', 'RLW', 'MGDA', 'IMTL',
                             'PCGrad', 'GradVac', 'CAGrad', 'GradDrop', 'DWA', 'Nash_MTL', 
                             'MoCo', 'MoDo']:
+        # add weighting type name as a kwarg (useful for MoDo)
+        kwargs['weight_args']['weighting'] = params.weighting
         if params.weighting in ['DWA']:
             if params.T is not None:
                 kwargs['weight_args']['T'] = params.T

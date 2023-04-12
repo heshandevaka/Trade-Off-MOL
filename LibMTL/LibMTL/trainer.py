@@ -130,8 +130,6 @@ class Trainer(nn.Module):
 
     def _process_data(self, loader):
         try:
-            # print('\n', loader, '\n')  # ADDED
-            # print('\n', next(loader), '\n') # ADDED
             data, label = next(loader[1]) # CHANGED
         except:
             loader[1] = iter(loader[0])
@@ -211,14 +209,33 @@ class Trainer(nn.Module):
                     train_losses = self._compute_loss(train_preds, train_gts)
                     self.meter.update(train_preds, train_gts)
                 else:
-                    train_losses = torch.zeros(self.task_num).to(self.device)
-                    for tn, task in enumerate(self.task_name):
-                        train_input, train_gt = self._process_data(train_loader[task])
-                        train_pred = self.model(train_input, task)
-                        train_pred = train_pred[task]
-                        train_pred = self.process_preds(train_pred, task)
-                        train_losses[tn] = self._compute_loss(train_pred, train_gt, task)
-                        self.meter.update(train_pred, train_gt, task)
+                    # double sample if MoDo
+                    if self.kwargs['weight_args']['weighting'] == 'MoDo':
+                        # TODO: Add double sampling for MoDo
+                        # init 2 sample collector (different from train_losses for other methods)
+                        train_losses = []
+                        # collect two independant samples
+                        for i in range(2):
+                            # dummy train_losses_ to be collected in train_losses
+                            train_losses_ = torch.zeros(self.task_num).to(self.device)
+                            for tn, task in enumerate(self.task_name):
+                                train_input, train_gt = self._process_data(train_loader[task])
+                                train_pred = self.model(train_input, task)
+                                train_pred = train_pred[task]
+                                train_pred = self.process_preds(train_pred, task)
+                                train_losses_[tn] = self._compute_loss(train_pred, train_gt, task)
+                                self.meter.update(train_pred, train_gt, task)
+                            # collect the loss sample (clone to be safe)
+                            train_losses.append(train_losses_.clone())
+                    else:
+                        train_losses = torch.zeros(self.task_num).to(self.device)
+                        for tn, task in enumerate(self.task_name):
+                            train_input, train_gt = self._process_data(train_loader[task])
+                            train_pred = self.model(train_input, task)
+                            train_pred = train_pred[task]
+                            train_pred = self.process_preds(train_pred, task)
+                            train_losses[tn] = self._compute_loss(train_pred, train_gt, task)
+                            self.meter.update(train_pred, train_gt, task)
 
                 self.optimizer.zero_grad()
                 w = self.model.backward(train_losses, **self.kwargs['weight_args'])

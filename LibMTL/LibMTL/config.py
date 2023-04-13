@@ -55,7 +55,7 @@ _parser.add_argument('--moco_gn', default='none', type=str,
 ## MoDo
 _parser.add_argument('--gamma_modo', type=float, default=0.1, help='learning rate of lambda')
 _parser.add_argument('--rho_modo', type=float, default=0.1, help='regularization parameter')
-_parser.add_argument('--modod_gn', default='none', type=str, 
+_parser.add_argument('--modo_gn', default='none', type=str, 
                     help='type of gradient normalization for MoDo, option: l2, none, loss, loss+')
 
 # args for architecture

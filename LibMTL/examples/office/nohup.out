@@ -1,28 +1,28 @@
 Traceback (most recent call last):
-  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/train_office.py", line 1, in <module>
-    import torch, argparse
-ModuleNotFoundError: No module named 'torch'
+  File "train_office.py", line 90, in <module>
+    main(params)
+  File "train_office.py", line 79, in main
+    officeModel.train(train_dataloaders=train_dataloaders, 
+  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/trainer.py", line 240, in train
+    w = self.model.backward(train_losses, **self.kwargs['weight_args'])
+  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/weighting/MoDo.py", line 142, in backward
+    grads.append(self._get_grads(losses[i], mode='backward'))
+  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/weighting/abstract_weighting.py", line 142, in _get_grads
+    grads = self._compute_grad(losses, mode)
+  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/weighting/abstract_weighting.py", line 76, in _compute_grad
+    losses[tn].backward(retain_graph=True) if (tn+1)!=self.task_num else losses[tn].backward()
+  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/tensor.py", line 245, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/autograd/__init__.py", line 145, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: Trying to backward through the graph a second time, but the saved intermediate results have already been freed. Specify retain_graph=True when calling .backward() or autograd.grad() the first time.
 Traceback (most recent call last):
-  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/train_office.py", line 1, in <module>
-    import torch, argparse
-ModuleNotFoundError: No module named 'torch'
-usage: train_office.py [-h] [--seed SEED] [--gpu_id GPU_ID]
-                       [--weighting WEIGHTING] [--arch ARCH] [--rep_grad]
-                       [--multi_input] [--optim OPTIM] [--lr LR]
-                       [--momentum MOMENTUM] [--weight_decay WEIGHT_DECAY]
-                       [--scheduler SCHEDULER] [--step_size STEP_SIZE]
-                       [--gamma GAMMA] [--T T] [--mgda_gn MGDA_GN]
-                       [--beta BETA] [--alpha ALPHA] [--leak LEAK]
-                       [--calpha CALPHA] [--rescale RESCALE]
-                       [--update_weights_every UPDATE_WEIGHTS_EVERY]
-                       [--optim_niter OPTIM_NITER] [--max_norm MAX_NORM]
-                       [--beta_moco BETA_MOCO] [--gamma_moco GAMMA_MOCO]
-                       [--rho_moco RHO_MOCO] [--moco_gn MOCO_GN]
-                       [--gamma_modo GAMMA_MODO] [--rho_modo RHO_MODO]
-                       [--modod_gn MODOD_GN]
-                       [--img_size IMG_SIZE [IMG_SIZE ...]]
-                       [--num_experts NUM_EXPERTS [NUM_EXPERTS ...]]
-                       [--num_nonzeros NUM_NONZEROS] [--kgamma KGAMMA]
-                       [--dataset DATASET] [--bs BS]
-                       [--dataset_path DATASET_PATH]
-train_office.py: error: unrecognized arguments: train_logs/moco_y_normalize_run_time_test.out
+  File "train_office.py", line 90, in <module>
+    main(params)
+  File "train_office.py", line 79, in main
+    officeModel.train(train_dataloaders=train_dataloaders, 
+  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/trainer.py", line 240, in train
+    w = self.model.backward(train_losses, **self.kwargs['weight_args'])
+  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/weighting/MoDo.py", line 144, in backward
+    grads = torch.tensor(grads)
+ValueError: only one element tensors can be converted to Python scalars

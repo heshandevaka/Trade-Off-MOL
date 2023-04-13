@@ -120,39 +120,48 @@ class MoDo(AbsWeighting):
         elif ntype == 'none':
             gn = torch.ones_like(loss_data).to(self.device)
         else:
-            raise ValueError('No support normalization type {} for MoCo'.format(ntype))
+            raise ValueError('No support normalization type {} for MoDo'.format(ntype))
         grads = grads / gn.unsqueeze(1).repeat(1, grads.size()[1])
         return grads
     
     def backward(self, losses, **kwargs): # TODO: Handle double sampling
-        # losses for MoDo is a list of two samples
-        losses1, losses2 = losses
+        # NOTE: losses for MoDo is a list of two samples
+        # losses1, losses2 = losses
+
+        # convert losses list to a tensor
+        losses = torch.stack(losses)
 
         # get algo params
         gamma_modo = kwargs['gamma_modo']
         rho_modo = kwargs['rho_modo']
         modo_gn = kwargs['modo_gn']
+        
         # get gradients from losses
-        grads1 = self._get_grads(losses, mode='backward')
+        grads = []
+        for i in range(2):
+            grads.append(self._get_grads(losses[i], mode='backward'))
+        # convert grads list to a tensor
+        grads = torch.stack(grads)
 
+        # TODO: handle rep_grad when double sampling
         if self.rep_grad: # assuming False (for now)
             per_grads, grads = grads[0], grads[1]
-        
-        # get loss values for normalizing
-        loss_data = torch.tensor([loss.item() for loss in losses]).to(self.device)
-        # normalize y before update lambda
-        y = self._gradient_normalizers(self.y, loss_data, ntype=moco_gn) # l2, loss, loss+, none
 
-        # print('lambda device:', self.lambd.shape, 'y shape:', self.y.shape) # REMOVE
+        # TODO: apply grad normalization for two grad samples
+    #    # get loss values for normalizing ( use the sum of gradients to upadte)
+    #     loss_data = torch.tensor([loss.item() for loss in losses]).to(self.device)
+    #     # normalize grads before update lambda (if needed)
+    #     grads = self._gradient_normalizers( grads, loss_data, ntype=modo_gn) # l2, loss, loss+, none
 
         # lambda update
-        self.lambd = self._projection2simplex( self.lambd - gamma_moco * ( y @ (torch.transpose(y, 0, 1) @ self.lambd ) + rho_moco * self.lambd ) )
+        self.lambd = self._projection2simplex( self.lambd - gamma_modo * ( grads[0] @ (torch.transpose(grads[1], 0, 1) @ self.lambd ) + rho_modo * self.lambd ) )
         # if exactly solving (not used, at least now): self.lambda = self._find_min_norm_element(y)
 
-        # update x (model) with Y@lambd
+        # update x (model) with grad[0]+grad[1] (handle avging via lr of x)
+        # TODO: handle rep_grad when double sampling
         if self.rep_grad: # assuming False (for now)
             self._backward_new_grads(self.lambd, per_grads=per_grads)
         else:
-            self._backward_new_grads(self.lambd, grads=y)
+            self._backward_new_grads(self.lambd, grads=torch.sum(grads, dim=0))
 
         return self.lambd.detach().cpu().numpy()

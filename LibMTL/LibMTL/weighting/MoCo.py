@@ -145,7 +145,7 @@ class MoCo(AbsWeighting):
         # get loss values for normalizing
         loss_data = torch.tensor([loss.item() for loss in losses]).to(self.device)
 
-        # normalize y before update lambda
+        # normalize y before update lambda (if needed)
         y = self._gradient_normalizers(self.y, loss_data, ntype=moco_gn) # l2, loss, loss+, none
 
         # print('lambda device:', self.lambd.shape, 'y shape:', self.y.shape) # REMOVE

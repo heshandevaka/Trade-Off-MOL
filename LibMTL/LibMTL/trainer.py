@@ -12,15 +12,18 @@ class Trainer(nn.Module):
     This is a unified and extensible training framework for multi-task learning. 
 
     Args:
-        task_dict (dict): A dictionary of name-information pairs of type (:class:`str`, :class:`dict`). \
-                            The sub-dictionary for each task has four entries whose keywords are named **metrics**, \
-                            **metrics_fn**, **loss_fn**, **weight** and each of them corresponds to a :class:`list`.
-                            The list of **metrics** has ``m`` strings, repersenting the name of ``m`` metrics \
-                            for this task. The list of **metrics_fn** has two elements, i.e., the updating and score \
-                            functions, meaning how to update thoes objectives in the training process and obtain the final \
-                            scores, respectively. The list of **loss_fn** has ``m`` loss functions corresponding to each \
-                            metric. The list of **weight** has ``m`` binary integers corresponding to each \
-                            metric, where ``1`` means the higher the score is, the better the performance, \
+        task_dict (dict): A dictionary of name-information pairs of type (:class:`str`, :class:`dict`). 
+                            The sub-dictionary for each task has four entries whose keywords are named 
+                            **metrics**, **metrics_fn**, **loss_fn**, **weight** and each of them corresponds to a :class:`list`.
+                            The list of **metrics** has ``m`` strings, repersenting the name of ``m`` metrics
+                            for this task. # ? m=1 most cases?
+                            The list of **metrics_fn** has two elements, i.e., the updating and score 
+                            functions, meaning how to update thoes objectives in the training process and obtain the final 
+                            scores, respectively. 
+                            The list of **loss_fn** has ``m`` loss functions corresponding to each
+                            metric. 
+                            The list of **weight** has ``m`` binary integers corresponding to each
+                            metric, where ``1`` means the higher the score is, the better the performance,
                             ``0`` means the opposite.                           
         weighting (class): A weighting strategy class based on :class:`LibMTL.weighting.abstract_weighting.AbsWeighting`.
         architecture (class): An architecture class based on :class:`LibMTL.architecture.abstract_arch.AbsArchitecture`.
@@ -29,12 +32,12 @@ class Trainer(nn.Module):
         rep_grad (bool): If ``True``, the gradient of the representation for each task can be computed.
         multi_input (bool): Is ``True`` if each task has its own input data, otherwise is ``False``. 
         optim_param (dict): A dictionary of configurations for the optimizier.
-        scheduler_param (dict): A dictionary of configurations for learning rate scheduler. \
+        scheduler_param (dict): A dictionary of configurations for learning rate scheduler. 
                                  Set it to ``None`` if you do not use a learning rate scheduler.
         kwargs (dict): A dictionary of hyperparameters of weighting and architecture methods.
 
     .. note::
-            It is recommended to use :func:`LibMTL.config.prepare_args` to return the dictionaries of ``optim_param``, \
+            It is recommended to use :func:`LibMTL.config.prepare_args` to return the dictionaries of ``optim_param``,
             ``scheduler_param``, and ``kwargs``.
 
     Examples::
@@ -130,6 +133,7 @@ class Trainer(nn.Module):
 
     def _process_data(self, loader):
         try:
+            # batch a sample from data_loader (default 64)
             data, label = next(loader[1]) # CHANGED
         except:
             loader[1] = iter(loader[0])

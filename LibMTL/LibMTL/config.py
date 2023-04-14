@@ -15,6 +15,8 @@ _parser.add_argument('--rep_grad', action='store_true', default=False,
                     help='computing gradient for representation or sharing parameters')
 _parser.add_argument('--multi_input', action='store_true', default=False, 
                     help='whether each task has its own input data')
+_parser.add_argument('--balanced', action='store_true', default=False, # ADDED data set balancing
+                    help='whether a balanced data set is used (instead of original)')
 ## optim
 _parser.add_argument('--optim', type=str, default='adam',
                     help='optimizer for training, option: adam, sgd, adagrad, rmsprop')

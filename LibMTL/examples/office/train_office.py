@@ -38,7 +38,7 @@ def main(params):
                        'weight': [1]} for task in task_name}
     
     # prepare dataloaders
-    data_loader, _ = office_dataloader(dataset=params.dataset, batchsize=params.bs, root_path=params.dataset_path)
+    data_loader, _ = office_dataloader(dataset=params.dataset, batchsize=params.bs, root_path=params.dataset_path, balanced=params.balanced)
     train_dataloaders = {task: data_loader[task]['train'] for task in task_name}
     val_dataloaders = {task: data_loader[task]['val'] for task in task_name}
     test_dataloaders = {task: data_loader[task]['test'] for task in task_name}

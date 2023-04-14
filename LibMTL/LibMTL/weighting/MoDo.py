@@ -124,7 +124,7 @@ class MoDo(AbsWeighting):
         grads = grads / gn.unsqueeze(1).repeat(1, grads.size()[1])
         return grads
     
-    def backward(self, losses, **kwargs): # TODO: Handle double sampling
+    def backward(self, losses, **kwargs):
         # NOTE: losses for MoDo is a list of two samples
         # losses1, losses2 = losses
 

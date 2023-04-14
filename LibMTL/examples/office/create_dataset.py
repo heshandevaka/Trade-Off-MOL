@@ -7,13 +7,18 @@ from PIL import Image
 
 
 class office_Dataset(Dataset):
-    def __init__(self, dataset, root_path, task, mode):
+    def __init__(self, dataset, root_path, task, mode, balanced=False):
         self.transform = transforms.Compose([
                         transforms.Resize((224, 224)),
                         transforms.ToTensor(),
                         transforms.Normalize(mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225]),
                         ])
-        f = open('./data_txt/{}/{}_{}.txt'.format(dataset, task, mode), 'r') # reads the image list from text file
+        # get a more balanced image list if balanced=True
+        if balanced:
+            f = open('./data_txt/{}-balanced/{}_{}.txt'.format(dataset, task, mode), 'r') # reads the image list from text file
+        # or the original dataset
+        else:
+            f = open('./data_txt/{}/{}_{}.txt'.format(dataset, task, mode), 'r') # reads the image list from text file
         self.img_list = f.readlines()
         f.close()
         self.root_path = root_path
@@ -27,20 +32,28 @@ class office_Dataset(Dataset):
     def __len__(self):
         return len(self.img_list)
     
-def office_dataloader(dataset, batchsize, root_path):
+def office_dataloader(dataset, batchsize, root_path, balanced=False):
+    # tasks if dataset is office-31 (3 tasks)
     if dataset == 'office-31':
         tasks = ['amazon', 'dslr', 'webcam']
+    # tasks if dataset is office-home (4 tasks)
     elif dataset == 'office-home':
         tasks = ['Art', 'Clipart', 'Product', 'Real_World']
+    # init dict of dataloasers
     data_loader = {}
+    # ? this is not used, dont know the use of this
     iter_data_loader = {}
+    # create and collect dataloader for each task
     for k, d in enumerate(tasks):
+        # init for each task d
         data_loader[d] = {}
         iter_data_loader[d] = {}
+        # create dataloaders for train, test and val datasets
         for mode in ['train', 'val', 'test']:
             shuffle = True if mode == 'train' else False
             drop_last = True if mode == 'train' else False
-            txt_dataset = office_Dataset(dataset, root_path, d, mode)
+            # create Dataset object that load images from the path, to be used in a DataLoader object (below)
+            txt_dataset = office_Dataset(dataset, root_path, d, mode, balanced=balanced)
 #             print(d, mode, len(txt_dataset))
             data_loader[d][mode] = DataLoader(txt_dataset, 
                                               num_workers=0, 
@@ -48,5 +61,7 @@ def office_dataloader(dataset, batchsize, root_path):
                                               batch_size=batchsize, 
                                               shuffle=shuffle,
                                               drop_last=drop_last)
+            # create corresponding iter object, unclear where used
             iter_data_loader[d][mode] = iter(data_loader[d][mode])
+    # return dataloaders for each task and each mode (train, test, eval)
     return data_loader, iter_data_loader

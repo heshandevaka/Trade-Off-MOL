@@ -8,7 +8,7 @@ _parser.add_argument('--seed', type=int, default=0, help='random seed')
 _parser.add_argument('--gpu_id', default='0', type=str, help='gpu_id')
 _parser.add_argument('--weighting', type=str, default='EW',
     help='loss weighing strategies, option: EW, UW, GradNorm, GLS, RLW, \
-        MGDA, PCGrad, GradVac, CAGrad, GradDrop, DWA, IMTL, MoCo, MoDo') # ADDED MoCo and MoDo
+        MGDA, PCGrad, GradVac, CAGrad, GradDrop, DWA, IMTL, MoCo, MoDo, PW') # ADDED MoCo, MoDo, and PW
 _parser.add_argument('--arch', type=str, default='HPS',
                     help='architecture for MTL, option: HPS, Cross_stitch, MTAN, CGC, PLE, MMoE, DSelect_k, DIY, LTB')
 _parser.add_argument('--rep_grad', action='store_true', default=False, 
@@ -59,6 +59,9 @@ _parser.add_argument('--gamma_modo', type=float, default=0.1, help='learning rat
 _parser.add_argument('--rho_modo', type=float, default=0.1, help='regularization parameter')
 _parser.add_argument('--modo_gn', default='none', type=str, 
                     help='type of gradient normalization for MoDo, option: l2, none, loss, loss+')
+## PW
+_parser.add_argument('--pref_weights', type=tuple, default=None, help='fixed preference weitghts to \
+                     each task, defaults to equal weights')
 
 # args for architecture
 ## CGC
@@ -80,7 +83,7 @@ def prepare_args(params):
     kwargs = {'weight_args': {}, 'arch_args': {}}
     if params.weighting in ['EW', 'UW', 'GradNorm', 'GLS', 'RLW', 'MGDA', 'IMTL',
                             'PCGrad', 'GradVac', 'CAGrad', 'GradDrop', 'DWA', 'Nash_MTL', 
-                            'MoCo', 'MoDo']:
+                            'MoCo', 'MoDo', 'PW']:
         # add weighting type name as a kwarg (useful for MoDo)
         kwargs['weight_args']['weighting'] = params.weighting
         if params.weighting in ['DWA']:
@@ -138,6 +141,18 @@ def prepare_args(params):
         elif params.weighting in ['MoDo']:
             if params.gamma_modo is not None and params.rho_modo is not None:
                 kwargs['weight_args']['gamma_modo'] = params.gamma_modo
+                kwargs['weight_args']['rho_modo'] = params.rho_modo
+                if params.modo_gn in ['none', 'l2', 'loss', 'loss+']:
+                    kwargs['weight_args']['modo_gn'] = params.modo_gn
+                else:
+                    raise ValueError('No support modo_gn {} for MoDo'.format(params.modo_gn)) 
+            else:
+                raise ValueError('MoDo needs gamma_modo, rho_modo, and modo_gn')
+        elif params.weighting in ['PW']: # TODO: Handle input preference weights
+            if params.pref_weights is None:
+                kwargs['weight_args']['pref_weights'] = np.ones()
+            if params.pref_weights is not None:
+                kwargs['weight_args']['pref_weights'] = params.gamma_modo
                 kwargs['weight_args']['rho_modo'] = params.rho_modo
                 if params.modo_gn in ['none', 'l2', 'loss', 'loss+']:
                     kwargs['weight_args']['modo_gn'] = params.modo_gn

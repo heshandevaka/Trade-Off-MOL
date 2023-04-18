@@ -73,7 +73,7 @@ class AbsWeighting(nn.Module):
             for tn in range(self.task_num): 
                 if mode == 'backward':
                     # accumulate gradients at both shared AND task specific parameters
-                    losses[tn].backward(retain_graph=True) # TODO: commented this part to facilitate MoDo, need to handle more efficiently: if (tn+1)!=self.task_num else losses[tn].backward()
+                    losses[tn].backward(retain_graph=True) # TODO: commented the following part to facilitate MoDo, need to handle more efficiently: if (tn+1)!=self.task_num else losses[tn].backward()
                     # collect the shared param gradient, which is the only part conflicting
                     grads[tn] = self._grad2vec()
                 elif mode == 'autograd':

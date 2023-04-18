@@ -41,8 +41,7 @@ def office_dataloader(dataset, batchsize, root_path, balanced=False):
         tasks = ['Art', 'Clipart', 'Product', 'Real_World']
     # init dict of dataloasers
     data_loader = {}
-    # ? this is not used, dont know the use of this
-    iter_data_loader = {}
+    iter_data_loader = {} # ? this is not used, dont know the use of this
     # create and collect dataloader for each task
     for k, d in enumerate(tasks):
         # init for each task d
@@ -61,7 +60,7 @@ def office_dataloader(dataset, batchsize, root_path, balanced=False):
                                               batch_size=batchsize, 
                                               shuffle=shuffle,
                                               drop_last=drop_last)
-            # create corresponding iter object, unclear where used
+            # ? create corresponding iter object, unclear where used
             iter_data_loader[d][mode] = iter(data_loader[d][mode])
     # return dataloaders for each task and each mode (train, test, eval)
     return data_loader, iter_data_loader

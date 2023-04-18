@@ -1,69 +1,17 @@
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-6  > hp_grid_logs/EW-seed-0-lr-1e-6.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-6  > hp_grid_logs/EW-seed-0-lr-1e-6.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-6  > hp_grid_logs/EW-seed-0-lr-1e-6.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-6  > hp_grid_logs/EW-seed-0-lr-1e-6.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-6  > hp_grid_logs/EW-seed-0-lr-1e-6.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-6  > hp_grid_logs/EW-seed-0-lr-1e-6.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-5  > hp_grid_logs/EW-seed-0-lr-1e-5.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-5  > hp_grid_logs/EW-seed-0-lr-1e-5.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-5  > hp_grid_logs/EW-seed-0-lr-1e-5.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-5  > hp_grid_logs/EW-seed-0-lr-1e-5.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-5  > hp_grid_logs/EW-seed-0-lr-1e-5.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-5  > hp_grid_logs/EW-seed-0-lr-1e-5.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-4  > hp_grid_logs/EW-seed-0-lr-1e-4.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-4  > hp_grid_logs/EW-seed-0-lr-1e-4.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-4  > hp_grid_logs/EW-seed-0-lr-1e-4.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-4  > hp_grid_logs/EW-seed-0-lr-1e-4.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-4  > hp_grid_logs/EW-seed-0-lr-1e-4.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-4  > hp_grid_logs/EW-seed-0-lr-1e-4.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-./run.sh: 4: cannot create test_logs/modo_bs_32_rho_0.5.out: Directory nonexistent
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-Traceback (most recent call last):
-  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/trainer.py", line 137, in _process_data
-    data, label = next(loader[1]) # CHANGED
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 517, in __next__
-    data = self._next_data()
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 557, in _next_data
-    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/create_dataset.py", line 24, in __getitem__
-    img = Image.open(os.path.join(self.root_path, img_path)).convert('RGB')
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/PIL/Image.py", line 3236, in open
-    fp = builtins.open(filename, "rb")
-FileNotFoundError: [Errno 2] No such file or directory: 'office-31-balanced/amazon/images/letter_tray/frame_0025.jpg'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "train_office.py", line 90, in <module>
-    main(params)
-  File "train_office.py", line 79, in main
-    officeModel.train(train_dataloaders=train_dataloaders, 
-  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/trainer.py", line 236, in train
-    train_input, train_gt = self._process_data(train_loader[task])
-  File "/home/hdf/hdf/MoDo/LibMTL/LibMTL/trainer.py", line 140, in _process_data
-    data, label = next(loader[1]) # CHANGED
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 517, in __next__
-    data = self._next_data()
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 557, in _next_data
-    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
-    data = [self.dataset[idx] for idx in possibly_batched_index]
-  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/create_dataset.py", line 24, in __getitem__
-    img = Image.open(os.path.join(self.root_path, img_path)).convert('RGB')
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/site-packages/PIL/Image.py", line 3236, in open
-    fp = builtins.open(filename, "rb")
-FileNotFoundError: [Errno 2] No such file or directory: 'office-31-balanced/amazon/images/tape_dispenser/frame_0084.jpg'
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-2  > hp_grid_logs/EW-seed-0-lr-1e-2.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-2  > hp_grid_logs/EW-seed-0-lr-1e-2.out
-python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting EW  --lr 1e-2  > hp_grid_logs/EW-seed-0-lr-1e-2.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.01 --rho_modo 0.01  > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.01-rho-0.01.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.01 --rho_modo 0.01  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.01-rho-0.01-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.01 --rho_modo 0.1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.01-rho-0.1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.01 --rho_modo 1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.01-rho-1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.1 --rho_modo 0.01  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.1-rho-0.01-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.1 --rho_modo 0.1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.1-rho-0.1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 0.1 --rho_modo 1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-0.1-rho-1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 1 --rho_modo 0.01  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-1-rho-0.01-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 1 --rho_modo 0.1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-1-rho-0.1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-5 --gamma_modo 1 --rho_modo 1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-5-gamma-1-rho-1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 0.01 --rho_modo 0.01  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-0.01-rho-0.01-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 0.01 --rho_modo 0.1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-0.01-rho-0.1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 0.01 --rho_modo 1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-0.01-rho-1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 0.1 --rho_modo 0.01  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-0.1-rho-0.01-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 0.1 --rho_modo 0.1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-0.1-rho-0.1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 0.1 --rho_modo 1  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-0.1-rho-1-bs-32.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoDo  --lr 1e-4 --gamma_modo 1 --rho_modo 0.01  --bs 32 > hp_grid_logs/MoDo-seed-0-lr-1e-4-gamma-1-rho-0.01-bs-32.out

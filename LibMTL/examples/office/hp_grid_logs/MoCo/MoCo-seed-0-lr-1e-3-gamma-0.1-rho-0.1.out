@@ -1,0 +1,24 @@
+========================================
+General Configuration:
+	Wighting: MoCo
+	Architecture: HPS
+	Rep_Grad: False
+	Multi_Input: True
+	Seed: 0
+	Device: cuda:0
+MoCo Configuration:
+	weighting: MoCo
+	beta_moco: 0.1
+	gamma_moco: 0.1
+	rho_moco: 0.1
+	moco_gn: none
+Optimizer Configuration:
+	optim: adam
+	lr: 0.001
+	weight_decay: 1e-05
+========================================
+Total Params: 11487901
+Trainable Params: 11487901
+Non-trainable Params: 0
+========================================
+LOG FORMAT | amazon_LOSS Acc | dslr_LOSS Acc | webcam_LOSS Acc | TIME

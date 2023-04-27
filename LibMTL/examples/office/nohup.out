@@ -2300,3 +2300,10 @@ python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path offic
 python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 0.01 --rho_modo 0.01  > hp_grid_logs/-seed-0-lr-1e-2-gamma-0.01-rho-0.01.out
 python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 0.01 --rho_modo 0.1  > hp_grid_logs/-seed-0-lr-1e-2-gamma-0.01-rho-0.1.out
 python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 0.01 --rho_modo 1  > hp_grid_logs/-seed-0-lr-1e-2-gamma-0.01-rho-1.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 0.1 --rho_modo 0.01  > hp_grid_logs/-seed-0-lr-1e-2-gamma-0.1-rho-0.01.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 0.1 --rho_modo 0.1  > hp_grid_logs/-seed-0-lr-1e-2-gamma-0.1-rho-0.1.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 0.1 --rho_modo 1  > hp_grid_logs/-seed-0-lr-1e-2-gamma-0.1-rho-1.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 1 --rho_modo 0.01  > hp_grid_logs/-seed-0-lr-1e-2-gamma-1-rho-0.01.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 1 --rho_modo 0.1  > hp_grid_logs/-seed-0-lr-1e-2-gamma-1-rho-0.1.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MoCo  --lr 1e-2 --gamma_modo 1 --rho_modo 1  > hp_grid_logs/-seed-0-lr-1e-2-gamma-1-rho-1.out
+./run_grid_moco.sh: 21: Syntax error: "done" unexpected

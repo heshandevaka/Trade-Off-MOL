@@ -32,14 +32,9 @@ class Toy(nn.Module):
         
         self.num_data = 5000 # number of empirical data (sampled from population distribution)
         self.data_mean = 0 # mean of population data distribution
-        self.data_sig = 1. # std of population distribution
-        self.emp_data_set = torch.normal(self.data_mean, self.data_sig, size=(self.num_data, 2))
+        self.data_sig = 0.05 # std of population distribution
+        self.emp_data_set = torch.normal(self.data_mean, self.data_sig, size=(self.num_data, 2)).detach()
         self.emp_data_mean = torch.mean(self.emp_data_set, dim=0).view([2, 1])
-        print('self.emp_data_mean.shape', self.emp_data_mean.shape)
-
-        dummy_g = torch.zeros([2, 2])
-        print(dummy_g, self.emp_data_mean, self.emp_data_mean.view(-1))
-        print(dummy_g + self.emp_data_mean)
 
     def forward(self, x, compute_grad=False, data_type='pop', batch_size=1): # data types: 'stoch', 'emp', 'pop'
         x1 = x[0]
@@ -74,28 +69,67 @@ class Toy(nn.Module):
                 f = f + torch.sum( x * self.emp_data_mean.view(-1))
             return f
 
-    def batch_forward(self, x, data_type='pop'): # data types: 'emp', 'pop'
-        x1 = x[:,0]
-        x2 = x[:,1]
+    def batch_forward(self, x, data_type='pop', compute_grad=False, batch_size=2): # data types: 'emp', 'pop'
 
-        f1 = torch.clamp((0.5*(-x1-7)-torch.tanh(-x2)).abs(), LOWER).log() + 6
-        f2 = torch.clamp((0.5*(-x1+3)+torch.tanh(-x2)+2).abs(), LOWER).log() + 6
-        c1 = torch.clamp(torch.tanh(x2*0.5), 0)
+        if compute_grad:
+            g = []
+            g_emp = []
+            f = []
+            for i, x_ in enumerate(x):
 
-        f1_sq = ((-x1+7).pow(2) + 0.1*(-x2-8).pow(2)) / 10 - 20
-        f2_sq = ((-x1-7).pow(2) + 0.1*(-x2-8).pow(2)) / 10 - 20
-        c2 = torch.clamp(torch.tanh(-x2*0.5), 0)
+                x1_, x2_ = x_[0], x_[1]
 
-        f1 = ( f1 * c1 + f1_sq * c2 )*2
-        f2 = f2 * c1 + f2_sq * c2
+                f1_ = torch.clamp((0.5*(-x1_-7)-torch.tanh(-x2_)).abs(), LOWER).log() + 6 
+                f2_ = torch.clamp((0.5*(-x1_+3)+torch.tanh(-x2_)+2).abs(), LOWER).log() + 6
+                c1_ = torch.clamp(torch.tanh(x2_*0.5), 0)
 
-        # for plotting emperical objective
-        if data_type == 'emp':
-            f1 = f1 + torch.sum( x * self.emp_data_mean.view(-1), dim=1)
-            f2 = f2 + torch.sum( x * self.emp_data_mean.view(-1), dim=1)
+                f1_sq_ = ((-x1_+7).pow(2) + 0.1*(-x2_-8).pow(2)) / 10 - 20
+                f2_sq_ = ((-x1_-7).pow(2) + 0.1*(-x2_-8).pow(2)) / 10 - 20
+                c2_ = torch.clamp(torch.tanh(-x2_*0.5), 0)
 
-        f  = torch.cat([f1.view(-1, 1), f2.view(-1,1)], -1)
-        return f
+                f1_ = ( f1_ * c1_ + f1_sq_ * c2_ )*2
+                f2_ = f2_ * c1_ + f2_sq_ * c2_
+
+                g11_ = torch.autograd.grad(f1_, x1_, retain_graph=True)[0].item()
+                g12_ = torch.autograd.grad(f1_, x2_, retain_graph=True)[0].item()
+                g21_ = torch.autograd.grad(f2_, x1_, retain_graph=True)[0].item()
+                g22_ = torch.autograd.grad(f2_, x2_, retain_graph=True)[0].item()
+                g_ = torch.Tensor([[g11_, g21_], [g12_, g22_]])
+                # if data_type=='stoch':
+                #     batch_mean = torch.mean(self.emp_data_set[np.random.choice(np.arange(self.num_data), batch_size), :], dim=0).view([2, 1])
+                #     g_ = g_ + batch_mean
+                # if data_type=='emp':
+                #     g_ = g_ + self.emp_data_mean
+                g.append(g_.clone())
+                g_emp.append(g_.clone()+ self.emp_data_mean)
+                f.append(torch.tensor([f1_.clone(), f2_.clone()]))
+            
+            return torch.stack(f), torch.stack(g), torch.stack(g_emp)
+        
+        else:
+            x1 = x[:,0]
+            x2 = x[:,1]
+
+            f1 = torch.clamp((0.5*(-x1-7)-torch.tanh(-x2)).abs(), LOWER).log() + 6
+            f2 = torch.clamp((0.5*(-x1+3)+torch.tanh(-x2)+2).abs(), LOWER).log() + 6
+            c1 = torch.clamp(torch.tanh(x2*0.5), 0)
+
+            f1_sq = ((-x1+7).pow(2) + 0.1*(-x2-8).pow(2)) / 10 - 20
+            f2_sq = ((-x1-7).pow(2) + 0.1*(-x2-8).pow(2)) / 10 - 20
+            c2 = torch.clamp(torch.tanh(-x2*0.5), 0)
+
+            f1 = ( f1 * c1 + f1_sq * c2 )*2
+            f2 = f2 * c1 + f2_sq * c2
+
+            # for plotting emperical objective
+            if data_type == 'emp':
+                print('torch.sum( x * self.emp_data_mean.view(-1), dim=1)', torch.sum( x * self.emp_data_mean.view(-1), dim=1).shape)
+                f1 = f1 + torch.sum( x * self.emp_data_mean.view(-1), dim=1)
+                f2 = f2 + torch.sum( x * self.emp_data_mean.view(-1), dim=1)
+            
+            f  = torch.cat([f1.view(-1, 1), f2.view(-1,1)], -1)
+
+            return f
 
 ################################################################################
 #
@@ -157,7 +191,6 @@ def plot3d(F, xl=11, data_type='pop'): # data types: 'emp', 'pop'
     Ys = F.batch_forward(Xs, data_type)
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
-
     ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
     ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
     ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
@@ -185,6 +218,71 @@ def plot3d(F, xl=11, data_type='pop'): # data types: 'emp', 'pop'
     ax.view_init(25)
     plt.tight_layout()
     plt.savefig(f"./imgs/_3d-obj-{data_type}.png", dpi=1000)
+
+# plot Pareto statioanrity at each point of the support
+def plot3d_PS(F, xl=11): # data types: 'emp', 'pop'
+    n = 500
+    x = np.linspace(-xl, xl, n)
+    y = np.linspace(-xl, xl, n)
+    X, Y = np.meshgrid(x, y)
+
+    Xs = torch.tensor(np.transpose(np.array([list(X.flat), list(Y.flat)])), dtype=torch.double, requires_grad=True)
+
+    Ys, Gs, Gs_emp = F.batch_forward(Xs, compute_grad=True)
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+    PS = []
+    PS_emp = []
+    for k, g, g_emp in enumerate(zip(Gs, Gs_emp)):
+        g_mgd_ = mgd(g)
+        PS.append(torch.norm(g_mgd_))
+        g_mgd_ = mgd(g_emp)
+        PS_emp.append(torch.norm(g_mgd_))
+
+    PS = torch.stack(PS).view(n,n)
+    PS_emp = torch.stack(PS_emp).view(n,n)
+
+    ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+    ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+    ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+    ax.grid(False)
+
+    Yv = Ys.mean(1).view(n,n)
+
+    surf = ax.plot_surface(X, Y, PS.numpy(), cmap=cm.viridis)
+    
+    zmin = Ys.mean(1).min()
+    zmax = Ys.mean(1).max()
+
+    ax.set_zticks([-16, -8, 0, 8]) # Original
+    ax.set_zlim(-20, 10) # Original
+    # ax.set_zticks([zmin, zmin/2, 0, zmax/2, zmax])
+    # ax.set_zlim(zmin-1, zmax+1)
+
+    ax.set_xticks([-10, 0, 10])
+    ax.set_yticks([-10, 0, 10])
+    for tick in ax.xaxis.get_major_ticks():
+        tick.label.set_fontsize(15)
+    for tick in ax.yaxis.get_major_ticks():
+        tick.label.set_fontsize(15)
+    for tick in ax.zaxis.get_major_ticks():
+        tick.label.set_fontsize(15)
+
+    ax.view_init(25)
+    plt.tight_layout()
+    plt.savefig(f"./imgs/_3d-PS-pop.png", dpi=1000)
+
+    # plot 2d contours
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    c = plt.contour(X, Y, PS, cmap=cm.viridis, linewidths=4.0, linestyles='dashed')
+    c1 = plt.contour(X, Y, PS_emp, cmap=cm.viridis, linewidths=4.0)
+    ax.set_aspect(1.0/ax.get_data_ratio(), adjustable='box')
+    plt.xticks([-10, -5, 0, 5, 10], fontsize=15)
+    plt.yticks([-10, -5, 0, 5, 10], fontsize=15)
+    plt.tight_layout()
+    plt.savefig(f"./imgs/_2d-PS.png", dpi=100)
+    plt.close()
+
 
 def plot_contour(F, emp=True, task=1, traj=None, xl=11, plotbar=False, name="tmp"): 
     n = 500
@@ -708,7 +806,7 @@ def cagrad(grads, c=0.5):
 
 
 def grad_comp():
-    lr=0.0001 #0.001
+    lr=0.01 #0.001
     sigma1=0.05 #0.05
     grads = {}
     all_traj_error_norm = {}
@@ -809,10 +907,10 @@ maps = {
 
 ### Start experiments ###
 
-def run_all(seeds=10):
-    lr=0.0005 #0.001
+def run_all(seeds=1):
+    lr=0.0001 #0.001
     sigma1=0.05 #0.05
-    batch_size=100
+    batch_size=50
     all_traj = {}
     all_traj_error_norm = {}
     all_traj_true_dir_norm = {}
@@ -827,6 +925,7 @@ def run_all(seeds=10):
     ]
 
     for i, init in enumerate(inits):
+        print(f'\ninit:{init}\n')
         for m in tqdm(["modo"]): #["mgd", "smgd", "pcgrad", "cagrad", "moco"]
             all_traj[m] = []
             all_traj_error_norm[m] = []
@@ -840,7 +939,7 @@ def run_all(seeds=10):
                 x = init.clone()
                 x.requires_grad = True
 
-                n_iter = 5000 # 70000
+                n_iter = 1000 # 70000
                 opt = torch.optim.Adam([x], lr=lr) # original
                 # opt = torch.optim.SGD([x], lr=lr)
                 decay = lambda epoch: 1/(epoch+1)**sigma1
@@ -856,21 +955,21 @@ def run_all(seeds=10):
                         _, grads = F(x, True, 'stoch', batch_size)
                         g = solver(grads, c=0.5)
                     elif m=="moco":
-                        _, grads = F(x, True, 'stoch', batch_size)
                         if it==0:
                             y = torch.zeros(grads.shape)
                             lambd = 0.5 * torch.ones([2,1])
                             beta = 0.1
                             gamma = 0.1
                             rho = 0.1
+                        _, grads = F(x, True, 'stoch', batch_size)
                         g, y, lambd = solver(grads, y, lambd, beta, gamma, rho)
                     elif m=="modo":
                         if it==0:
                             lambd = 0.5 * torch.ones([2,1])
                             gamma = 0.01
                             rho = 0.001
-                            _, grads1 = F(x, True, 'stoch', batch_size//2)
-                            _, grads2 = F(x, True, 'stoch', batch_size//2)
+                        _, grads1 = F(x, True, 'stoch', batch_size//2)
+                        _, grads2 = F(x, True, 'stoch', batch_size//2)
                         g, lambd = solver(grads1, grads2, lambd, gamma, rho)
                     elif m=="local-tracking":
                         J=4
@@ -893,6 +992,8 @@ def run_all(seeds=10):
                     g_true_norm = np.linalg.norm(g_true)
                     traj_true_dir_norm.append(g_true_norm)
 
+                    print(f'it: {it}, grad: {g}')
+
                     opt.zero_grad()
                     x.grad = g
                     opt.step()
@@ -901,7 +1002,6 @@ def run_all(seeds=10):
                 all_traj[m].append(torch.tensor(traj))
                 all_traj_error_norm[m].append(torch.tensor(traj_error_norm))
                 all_traj_true_dir_norm[m].append(torch.tensor(traj_true_dir_norm))
-        print(all_traj)
         torch.save(all_traj, f"toy{i}-runs{seeds}.pt")
         torch.save(all_traj_error_norm, f"toy{i}-error_norm-runs{seeds}.pt")
         torch.save(all_traj_true_dir_norm, f"toy{i}-true_dir_norm-runs{seeds}.pt")
@@ -910,14 +1010,17 @@ def plot_results():
     plot3d(F)
     plot_contour(F, 1, name="./imgs/_toy_task_1")
     plot_contour(F, 2, name="./imgs/_toy_task_2")
-    t1 = torch.load(f"toy0-runs10.pt")
-    t2 = torch.load(f"toy1-runs10.pt")
-    t3 = torch.load(f"toy2-runs10.pt")
+    t1 = torch.load(f"toy0-runs1.pt")
+    t2 = torch.load(f"toy1-runs1.pt")
+    t3 = torch.load(f"toy2-runs1.pt")
     # t4 = torch.load(f"toy3-samples10.pt")
     # t5 = torch.load(f"toy4-samples10.pt")
 
     # length = t1["sgd"].shape[0] #original
     key_list = list(t1.keys())
+    print('\n Loaded keys:\n')
+    print(key_list)
+    print()
     length = t1[key_list[0]][0].shape[0]
     # tt1 = torch.FloatTensor(t1["cagrad"]).mean(axis=0)
     
@@ -948,6 +1051,9 @@ if __name__ == "__main__":
     
     # Plot trajectories    
     plot_results()    
+
+    # plot 3d PS measure surface
+    # plot3d_PS(F)   
 	
     # t = torch.load(f"toy2.pt")   
     ## Plot loss landscape        

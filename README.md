@@ -20,7 +20,7 @@ python train_office.py -h
 
 ## Toy-MNIST
 
-This folder contains the toy MOO task designed using multiple loss functions applied to a multi-layer perceptron (MLP) for learning to classify the MNIST dataset. The code structure is simpler compared to the LibMTL framework, althoogh similar in implementation. Currently the code is designed to use three loss functions: coress-entropy loss, l1-loss, and hinge-loss. The training logs of this task report overall classification accuracy, per objective loss, and Pareto stationarity measure for train, test and validation datasets.
+This folder contains the toy MOO task designed using multiple loss functions applied to a multi-layer perceptron (MLP) for learning to classify the MNIST dataset. The code structure is simpler compared to the LibMTL framework, although similar in implementation. Currently the code is designed to use three loss functions: coress-entropy loss, l1-loss, and hinge-loss. The training logs of this task report overall classification accuracy, per objective loss, and Pareto stationarity measure for train, test and validation datasets.
 
 To run an experiment with MoDo, navigate to `Toy-MNIST`, and run
 

@@ -1,54 +1,122 @@
-python -u toy.py --seed 0 --moo_method EW  --lr 1e-3  > hp_grid_logs/EW-seed-0-lr-1e-3.out
-python -u toy.py --seed 0 --moo_method EW  --lr 5e-3  > hp_grid_logs/EW-seed-0-lr-5e-3.out
-python -u toy.py --seed 0 --moo_method EW  --lr 1e-2  > hp_grid_logs/EW-seed-0-lr-1e-2.out
-python -u toy.py --seed 0 --moo_method MGDA  --lr 1e-2  > hp_grid_logs/MGDA-seed-0-lr-1e-2.out
-python -u toy.py --seed 0 --moo_method EW  --lr 5e-2  > hp_grid_logs/EW-seed-0-lr-5e-2.out
-python -u toy.py --seed 0 --moo_method MGDA  --lr 5e-2  > hp_grid_logs/MGDA-seed-0-lr-5e-2.out
-Traceback (most recent call last):
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
-    finalizer()
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/multiprocessing/util.py", line 224, in __call__
-    res = self._callback(*self._args, **self._kwargs)
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
-    rmtree(tempdir)
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/shutil.py", line 722, in rmtree
-    onerror(os.rmdir, path, sys.exc_info())
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/shutil.py", line 720, in rmtree
-    os.rmdir(path)
-OSError: [Errno 39] Directory not empty: '/tmp/pymp-uhvyq3l9'
-python -u toy.py --seed 0 --moo_method EW  --lr 1e-1  > hp_grid_logs/EW-seed-0-lr-1e-1.out
-python -u toy.py --seed 0 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.1 --rho 0.1 > hp_grid_logs/MoCo-seed-0-lr-0.1-beta-0.1-gamma-0.1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_moco 0.1 --rho_moco 0.1 > hp_grid_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MGDA  --lr 1e-1  > hp_grid_logs/MGDA-seed-0-lr-1e-1.out
-./run_grid_ew.sh: 11: Syntax error: "done" unexpected
-python -u toy.py --seed 0 --moo_method EW  --lr 5e-1  > hp_grid_logs/EW-seed-0-lr-5e-1.out
-python -u toy.py --seed 0 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 1 --rho 0.1 > hp_grid_logs/MoCo-seed-0-lr-0.1-beta-0.1-gamma-1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_moco 1 --rho_moco 0.1 > hp_grid_logs/MoDo-seed-0-lr-0.1-gamma-1-rho-0.1.out
-Traceback (most recent call last):
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
-    finalizer()
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/multiprocessing/util.py", line 224, in __call__
-    res = self._callback(*self._args, **self._kwargs)
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
-    rmtree(tempdir)
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/shutil.py", line 722, in rmtree
-    onerror(os.rmdir, path, sys.exc_info())
-  File "/home/hdf/anaconda3/envs/libmtl/lib/python3.8/shutil.py", line 720, in rmtree
-    os.rmdir(path)
-OSError: [Errno 39] Directory not empty: '/tmp/pymp-id7xs1yz'
-python -u toy.py --seed 0 --moo_method MGDA  --lr 5e-1  > hp_grid_logs/MGDA-seed-0-lr-5e-1.out
-python -u toy.py --seed 0 --moo_method EW  --lr 1  > hp_grid_logs/EW-seed-0-lr-1.out
-python -u toy.py --seed 0 --moo_method MoCo  --lr 1 --beta 0.1 --gamma 0.1 --rho 0.1 > hp_grid_logs/MoCo-seed-0-lr-1-beta-0.1-gamma-0.1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MGDA  --lr 1.  > hp_grid_logs/MGDA-seed-0-lr-1..out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 1 --gamma_moco 0.1 --rho_moco 0.1 > hp_grid_logs/MoDo-seed-0-lr-1-gamma-0.1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoCo  --lr 1 --beta 0.1 --gamma 1 --rho 0.1 > hp_grid_logs/MoCo-seed-0-lr-1-beta-0.1-gamma-1-rho-0.1.out
-./run_grid_mgda.sh: 11: Syntax error: "done" unexpected
-python -u toy.py --seed 0 --moo_method MoDo  --lr 1 --gamma_moco 1 --rho_moco 0.1 > hp_grid_logs/MoDo-seed-0-lr-1-gamma-1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > hp_grid_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > hp_grid_logs/MoCo-seed-0-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoCo  --lr 1 --beta 0.1 --gamma 0.01 --rho 0.1 > hp_grid_logs/MoCo-seed-0-lr-1-beta-0.1-gamma-0.01-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 1 --rho_modo 0.1 > hp_grid_logs/MoDo-seed-0-lr-0.1-gamma-1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 1 --gamma_modo 0.1 --rho_modo 0.1 > hp_grid_logs/MoDo-seed-0-lr-1-gamma-0.1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 1 --gamma_modo 1 --rho_modo 0.1 > hp_grid_logs/MoDo-seed-0-lr-1-gamma-1-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > hp_grid_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.1.out
-python -u toy.py --seed 0 --moo_method MoDo  --lr 1 --gamma_modo 0.01 --rho_modo 0.1 > hp_grid_logs/MoDo-seed-0-lr-1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.001-rho-0.1.out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.001 > modo_rho_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.1-rho-0.001.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.01 > modo_rho_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.1-rho-0.01.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.1-rho-0.1.out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 1. > modo_rho_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.1-rho-1..out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.1 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-1.-rho-0.1.out
+python -u toy.py --seed 0 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-0-lr-0.1.out
+python -u toy.py --seed 0 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-0-lr-1.0.out
+python -u toy.py --seed 1 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-1-lr-0.1.out
+python -u toy.py --seed 1 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-1-lr-1.0.out
+python -u toy.py --seed 2 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-2-lr-0.1.out
+python -u toy.py --seed 2 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-2-lr-1.0.out
+python -u toy.py --seed 3 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-3-lr-0.1.out
+python -u toy.py --seed 3 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-3-lr-1.0.out
+python -u toy.py --seed 4 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-4-lr-0.1.out
+python -u toy.py --seed 4 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-4-lr-1.0.out
+python -u toy.py --seed 5 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-5-lr-0.1.out
+python -u toy.py --seed 5 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-5-lr-1.0.out
+python -u toy.py --seed 6 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-6-lr-0.1.out
+python -u toy.py --seed 6 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-6-lr-1.0.out
+python -u toy.py --seed 7 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-7-lr-0.1.out
+python -u toy.py --seed 7 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-7-lr-1.0.out
+python -u toy.py --seed 8 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-8-lr-0.1.out
+python -u toy.py --seed 8 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-8-lr-1.0.out
+python -u toy.py --seed 9 --moo_method EW  --lr 0.1  > perf_logs/EW-seed-9-lr-0.1.out
+python -u toy.py --seed 9 --moo_method MGDA  --lr 1.0  > perf_logs/MGDA-seed-9-lr-1.0.out
+python -u toy.py --seed  --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed--lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+usage: toy.py [-h] [--seed SEED] [--batch_size BATCH_SIZE]
+              [--num_epochs NUM_EPOCHS] [--lr LR] [--moo_method MOO_METHOD]
+              [--beta_moco BETA_MOCO] [--gamma_moco GAMMA_MOCO]
+              [--rho_moco RHO_MOCO] [--gamma_modo GAMMA_MODO]
+              [--rho_modo RHO_MODO]
+toy.py: error: argument --seed: expected one argument
+python -u toy.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 0 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-0-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-1-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 1 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-1-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-2-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-2-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-3-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-4-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-3-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 5 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-5-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-4-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 6 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-6-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 7 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-7-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-5-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 8 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-8-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 9 --moo_method MoCo  --lr 0.1 --beta 0.1 --gamma 0.01 --rho 0.1 > perf_logs/MoCo-seed-9-lr-0.1-beta-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-6-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-7-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-8-lr-0.1-gamma-0.01-rho-0.1.out
+python -u toy.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.1 > perf_logs/MoDo-seed-9-lr-0.1-gamma-0.01-rho-0.1.out

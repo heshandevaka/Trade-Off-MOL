@@ -2,9 +2,9 @@ mkdir -p modo_gamma_ablation_logs
 moo_method=MoDo
 
 LR_SET="0.1"
-GAMMA_SET="0.001 0.01 0.1 1."
+GAMMA_SET="0.005 0.05 0.5"
 RHO_SET="0.1"
-SEED_SET="5 6 7 8 9"
+SEED_SET="0 1 2 3 4 5 6 7 8 9"
 
 for lr in $LR_SET; do
     for gamma in $GAMMA_SET; do

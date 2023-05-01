@@ -73,7 +73,7 @@ def get_accuracy(pred, label):
     return torch.sum(torch.eq( torch.argmax(pred, dim=1), label )) / pred.shape[0]
     
 
-# get performance measures of the learned model (at the end of training)
+# get performance measures of the learned model
 def get_performance(model, optimizer, dataloader, loss_dict, num_param, num_param_layer, softmax, onehot_enc):
     grad_list = 0
     loss_list = 0
@@ -158,25 +158,6 @@ def get_grads(model, optimizer, pred, label, loss_dict, num_param, num_param_lay
         loss_list.append(loss.detach().item())
     
     return torch.stack(grad_list), np.array(loss_list)
-
-# get loss values w.r.t each loss function (for each iteration calculation)
-def get_loss(model, loss_dict, dataloader, softmax, onehot_enc):
-    # init average loss list (to be collected one gradient for each loss function)
-    loss_list = 0
-    count = 0
-    # compute the loss w.r.t each loss function
-    for data, label in iter(dataloader):
-        pred = model(data)
-        loss_list_ = []
-        for k, loss_fn in enumerate(loss_dict):
-            if loss_fn =='l1':
-                loss_ = loss_dict[loss_fn](softmax(pred), onehot_enc[label])
-            else:
-                loss_ = loss_dict[loss_fn](pred, label)
-            loss_list_.append(loss_.detach().item())
-        loss_list = loss_list + np.array(loss_list_)
-        count += 1
-    return loss_list / count
 
 # set multi-gradient in the model param grad
 def set_grads(model, multi_grad, num_param_layer):
@@ -301,9 +282,9 @@ kwargs = {'EW':{}, 'MGDA':{}, 'MoCo':moco_kwargs, 'MoDo':modo_kwargs}
 optimizer = optim.SGD(model.parameters(), lr=lr)
 
 # print log format
-print("\n"+"="*80)
-print(f'LOG FORMAT: Epoch: EPOCH | Train: {" ".join([f"LOSS{i+1}" for i in range(num_tasks)])} | Test: {" ".join([f"LOSS{i+1}" for i in range(num_tasks)])}')
-print("="*80)
+print("\n"+"="*70)
+print(f'LOG FORMAT: Epoch: EPOCH | Train: {" ".join([f"LOSS{i+1}" for i in range(num_tasks)])}')
+print("="*70)
 for i in range(num_epochs):
     # if MoDo, double sample
     if moo_method=='MoDo':
@@ -315,8 +296,10 @@ for i in range(num_epochs):
             # get model prediction (logits)  
             pred = model(data)
             # get gradients and loss values w.r.t each loss fn
-            grad_list_, _ = get_grads(model, optimizer, pred, label, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
+            grad_list_, loss_list_ = get_grads(model, optimizer, pred, label, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
             grad_list.append(grad_list_)
+            # average the loss over two samples
+            loss_list = [loss_list[k] + 0.5 * loss_list_[k] for k in range(num_tasks)]
     # or single batch sample for other methods
     else:
         # sample training data and label
@@ -324,31 +307,27 @@ for i in range(num_epochs):
         # get model prediction (logits)  
         pred = model(data)
         # get gradients and loss values w.r.t each loss fn
-        grad_list, _ = get_grads(model, optimizer, pred, label, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
+        grad_list, loss_list = get_grads(model, optimizer, pred, label, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
     # calc multi-grad according to moo method
     multi_grad = multi_grad_fn[moo_method](grad_list, **kwargs)
-    # get loss values
-    train_loss_ = get_loss(model, loss_dict, train_eval_dataloader, softmax, onehot_enc)
-    test_loss_ = get_loss(model, loss_dict, test_dataloader, softmax, onehot_enc)
     # update model grad with the multi-grad
     set_grads(model, multi_grad, num_param_layer)
     # update model param
     optimizer.step()
     # print loss values
     if i%100 == 0 or i==num_epochs-1:
-        print(f"Epoch: {i: 6,} | Train: { ' '.join(str(round(num, 4)) for num in train_loss_) }"
-               +f" | Test: { ' '.join(str(round(num, 4)) for num in test_loss_) }")
+        print(f"Epoch: {i: 6,} | Train: { ' '.join(str(round(num, 4)) for num in loss_list) }")
 # get perforamnce measures from each dataset
 train_acc, train_loss, train_ps = get_performance(model, optimizer, train_eval_dataloader, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
 val_acc, val_loss, val_ps = get_performance(model, optimizer, val_dataloader, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
 test_acc, test_loss, test_ps = get_performance(model, optimizer, test_dataloader, loss_dict, num_param, num_param_layer, softmax, onehot_enc)
-print("\n"+"="*80)
+print("\n"+"="*70)
 print(f'PERF FORMAT: DATASET | Acuracy: ACC | Loss: {" ".join([f"LOSS{i+1}" for i in range(num_tasks)])} | PS: PS')
 print("="*70)
 print(f"Train | Acuracy: {train_acc *100 : 2.2f}% | Loss: { ' '.join(str(round(num, 5)) for num in train_loss) } | PS: {round(train_ps, 5)} ")
 print(f"Val   | Acuracy: {val_acc*100 : 2.2f}% | Loss: { ' '.join(str(round(num, 5)) for num in val_loss) } | PS: {round(val_ps, 5)} ")
 print(f"Test  | Acuracy: {test_acc*100 : 2.2f}% | Loss: { ' '.join(str(round(num, 5)) for num in test_loss) } | PS: {round(test_ps, 5)} ")
-print("-"*80)
+print("-"*70)
 print(f'Optimization error  : {round(train_ps, 5)}')
 print(f'Population error    : {round(test_ps, 5)}')
 print(f'Generalization error: {round(test_ps  - train_ps, 5)}')

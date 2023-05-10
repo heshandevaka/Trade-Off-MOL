@@ -1,0 +1,22 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=0.005, lr=0.1, moo_method='MoDo', num_epochs=1000, rho_moco=0.1, rho_modo=0.0, seed=7)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+======================================================================
+LOG FORMAT: Epoch: EPOCH | Train: LOSS1 LOSS2 LOSS3
+======================================================================
+Epoch:      0 | Train: 2.3284 0.18 0.9007
+Epoch:    100 | Train: 0.4647 0.0602 0.0554
+Epoch:    200 | Train: 0.4965 0.049 0.078
+Epoch:    300 | Train: 0.5159 0.0451 0.0897
+Epoch:    400 | Train: 0.7123 0.0486 0.184
+Epoch:    500 | Train: 0.107 0.0181 0.0027
+Epoch:    600 | Train: 0.1942 0.0277 0.0161

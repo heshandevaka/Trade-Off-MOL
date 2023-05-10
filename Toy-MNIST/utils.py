@@ -8,6 +8,7 @@ import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import numpy as np
 import random 
+import os
 
 # Some helper functions for sub-problem solving/MOO method param 
 # updates from LibMTL: https://github.com/median-research-group/LibMTL.git
@@ -123,3 +124,19 @@ def set_seed(seed):
     g.manual_seed(seed)
 
     return seed_worker, g
+
+# remove bad log files to restart logging
+def rem_bad_logs(dir_name, rem_dir='remove'):
+    file_names = os.listdir(dir_name)
+    for file_name in file_names:
+        file_path = f"{dir_name}/{file_name}"
+        if not os.path.isdir(file_path):
+            f = open(file_path, 'r')
+            if f.read()=='':
+                new_path = f"{dir_name}/{rem_dir}/{file_name}"
+                os.rename(file_path, new_path)
+                print(file_name)
+            f.close()
+
+if __name__=="__main__":
+    rem_bad_logs('./modo_gamma_ablation_logs')

@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import  os
+import copy
+
+import matplotlib.lines as mlines
+
+# ------------------------------------------------------------legacy code-----------------------------------------------------------------------------------------
 
 # ablation over different gamma for MoDo
 def gamma_ablation(plot_type='gen'):
@@ -62,19 +67,25 @@ def gamma_ablation(plot_type='gen'):
     # plot
     fig, ax = plt.subplots()
     gamma_list = [float(gamma) for gamma in gamma_list]
+
     ax.set_xscale("log")
+    std_scale = 0.5
+    # ax.set_yscale("log") # not useful since all errors are in similar order
     if plot_type=='pop_opt':
-        ax.errorbar(gamma_list, opt_error_mean, opt_error_std, fmt='o-', capsize=5, color='b', label=r'$R_{opt}$')
-        ax.errorbar(gamma_list, pop_error_mean, pop_error_std, fmt='o-', capsize=5, color='r', label=r'$R_{pop}$')
-        ax.set_ylabel('Error metric value')
+        ax.errorbar(gamma_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color='b',markeredgecolor='k', markersize=5, linewidth=4, label=r'$R_{opt}$')
+        ax.errorbar(gamma_list, pop_error_mean, std_scale*pop_error_std, fmt='o-', capsize=5, 
+                    color='r',markeredgecolor='k', markersize=5, linewidth=4, label=r'$R_{pop}$')
+        ax.set_ylabel('Error')
     if plot_type=='gen':
-        ax.errorbar(gamma_list, gen_error_mean, gen_error_std, fmt='o-', capsize=5, color='g', label=r'$|R_{gen}|$')
+        ax.errorbar(gamma_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color='g',markeredgecolor='k', markersize=5, linewidth=4, label=r'$|R_{gen}|$')
         ax.set_ylabel('Absolute generalization error')
     ax.set_xlabel(r'$\gamma$')
     ax.legend()
-    plt.savefig(f'./figures/gamma_{plot_type}_err_comp')
+    plt.savefig(f'./figures/gamma_{plot_type}_err_comp.pdf', bbox_inches='tight')
 
-# ablation over different rho for MoDo
+    # ablation over different rho for MoDo
 def rho_ablation(plot_type='gen'):
     # folder containing data logs for ablation
     folder='./modo_rho_ablation_logs/'
@@ -136,17 +147,105 @@ def rho_ablation(plot_type='gen'):
     rho_list = [float(rho) for rho in rho_list]
     ax.set_xscale("log")
     if plot_type=='pop_opt':
-        ax.errorbar(rho_list, opt_error_mean, opt_error_std, fmt='o-', capsize=5, color='b', label=r'$R_{opt}$')
-        ax.errorbar(rho_list, pop_error_mean, pop_error_std, fmt='o-', capsize=5, color='r', label=r'$R_{pop}$')
-        ax.set_ylabel('Error metric value')
+        ax.errorbar(rho_list, opt_error_mean, opt_error_std, fmt='o-', capsize=5, color='b', markeredgecolor='k', markersize=5, label=r'$R_{opt}$')
+        ax.errorbar(rho_list, pop_error_mean, pop_error_std, fmt='^-', capsize=5, color='r',markeredgecolor='k', markersize=5, label=r'$R_{pop}$')
+        ax.set_ylabel('Error')
     if plot_type=='gen':
-        ax.errorbar(rho_list, gen_error_mean, gen_error_std, fmt='o-', capsize=5, color='g', label=r'$|R_{gen}|$')
+        ax.errorbar(rho_list, gen_error_mean, gen_error_std, fmt='v-', capsize=5, color='g',markeredgecolor='k', markersize=5, label=r'$|R_{gen}|$')
         ax.set_ylabel('Absolute generalization error')
-    ax.set_xlabel(r'$\rho$')
+        # gen_err_handle = ax.errorbar([], [], [], fmt='v-', capsize=10, color='g',markeredgecolor='k',
+        #                   markersize=10, label=r'$|R_{gen}|$')
     ax.legend()
-    plt.savefig(f'./figures/rho_{plot_type}_err_comp')
+    ax.set_xlabel(r'$\rho$')
+    plt.savefig(f'./figures/rho_{plot_type}_err_comp.pdf', bbox_inches='tight')
 
-# ablation over different rho for MoDo
+    # ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ablation over different hp for MoDo
+def hp_ablation(plot_type='gen', hp_type='gamma'):
+    # folder containing data logs for ablation
+    folder=f'./modo_{hp_type}_ablation_logs/'
+    file_list = os.listdir(folder)
+
+    print(file_list)
+
+    # hp set used for ablation
+    if hp_type=='gamma':
+        hp_list = ['0.001', '0.005', '0.01', '0.05', '0.1', '0.5', '1.']
+        hp_label = r'$\gamma$'
+    if hp_type=='rho':
+        hp_list = ['0.001', '0.005', '0.01', '0.05', '0.1', '0.5', '1.']
+        hp_label = r'$\rho$'
+    if hp_type=='lr':
+        hp_list = ['0.001', '0.005', '0.01', '0.05', '0.1', '0.5', '1.']
+        hp_label = r'$\alpha$'
+
+    # init lists to collect data from different seeds
+    opt_error = {hp:[] for hp in hp_list}
+    pop_error = {hp:[] for hp in hp_list}
+    gen_error = {hp:[] for hp in hp_list}
+
+    # scrape the log files
+    for hp in hp_list:
+        for file in file_list:
+            if f'{hp_type}-{hp}' in file:
+                foo = open(folder+file)
+                lines = foo.read().split('\n')
+                print(f'\n{file}', hp)
+                for line in lines:
+                    # scrape pop. error data from log file
+                    if "Population error" in line:
+                        pop_error[hp].append(float(line.strip().split(': ')[1]))
+                    # scrape opt. error data from log file
+                    if "Optimization error" in line:
+                        opt_error[hp].append(float(line.strip().split(': ')[1]))
+                    # scrape gen. error data from log file (absolute value)
+                    if "Generalization error" in line:
+                        gen_error[hp].append(abs(float(line.strip().split(': ')[1])))
+
+    # calc mean and std deviation for plotting (without normlization)
+    opt_error_mean = np.array([np.mean(opt_error[hp]) for hp in hp_list])
+    opt_error_std = np.array([np.std(opt_error[hp]) for hp in hp_list])
+    gen_error_mean = np.array([np.mean(gen_error[hp]) for hp in hp_list])
+    gen_error_std = np.array([np.std(gen_error[hp]) for hp in hp_list])
+    pop_error_mean = np.array([np.mean(pop_error[hp]) for hp in hp_list])
+    pop_error_std = np.array([np.std(pop_error[hp]) for hp in hp_list])
+
+    # plot
+    fig, ax = plt.subplots()
+    hp_list = [float(hp) for hp in hp_list]
+
+    ax.set_xscale("log")
+    std_scale = 1.0
+    # ax.set_yscale("log") # not useful since all errors are in similar order
+    if plot_type=='pop_opt':
+        ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color='b',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o-', capsize=5, 
+                    color='r',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')
+        ax.set_ylabel('Error', fontsize=18)
+    if plot_type=='gen':
+        ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color='g',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')
+        # ax.set_ylabel('Absolute generalization error', fontsize=15)
+    if plot_type=='all':
+        ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color='b',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o-', capsize=5, 
+                    color='r',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')     
+        ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color='g',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax.set_ylabel('Error', fontsize=18)
+    ax.set_xlabel(hp_label, fontsize=18)
+    if plot_type=='gen' and hp_type=='gamma':
+        ax.set_ylim([0.0005, 0.004])
+    plt.xticks(fontsize=15)
+    plt.yticks(fontsize=15)
+    plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+    ax.legend(fontsize=18)
+    plt.savefig(f'./figures/{hp_type}_{plot_type}_err_comp.pdf', bbox_inches='tight')
+
+# calc final loss and errors for methods
 def loss_calc():
     # folder containing data logs for ablation
     folder='./perf_logs/'
@@ -186,16 +285,19 @@ def loss_calc():
                     if "Generalization error" in line:
                         gen_error[moo_method].append(abs(float(line.strip().split(': ')[1])))
 
-# ablation over different rho for MoDo
+
+# plot loss vs epochs
 def loss_plots():
     # folder containing data logs for ablation
-    folder='./loss_logs/'
+    folder='./mo_loss_logs/'
     file_list = os.listdir(folder)
+    num_epochs = 21
 
     print(file_list)
 
     # hp set used for ablation
     moo_method_list = ['EW', 'MGDA', 'MoCo', 'MoDo']
+    loss_list = ['Cross-entropy loss', 'L1 loss', 'Hinge loss']
 
     # init lists to collect data from different seeds
     train_loss = {moo_method:[] for moo_method in moo_method_list}
@@ -211,40 +313,283 @@ def loss_plots():
                 test_epoch_loss_list = []
                 for line in lines:
                     # scrape test and training loss at each iteration from log file
-                    if ("Epoch" in line) and ("Format" not in line):
-                        test_loss_list, train_loss_list = line.strip().split(' | ')[1], line.strip().split(' | ')[2]
+                    if ("Epoch" in line) and ("FORMAT" not in line):
+                        # print(line)
+                        train_loss_list, test_loss_list = line.strip().split(' | ')[1], line.strip().split(' | ')[2]
                         train_loss_list = [float(loss) for loss in train_loss_list.split(': ')[1].strip().split(' ')]
                         test_loss_list = [float(loss) for loss in test_loss_list.split(': ')[1].strip().split(' ')]
                         train_epoch_loss_list.append(train_loss_list)
                         test_epoch_loss_list.append(test_loss_list)
                 train_loss[moo_method].append(train_epoch_loss_list)
                 test_loss[moo_method].append(test_epoch_loss_list)
+        train_loss[moo_method] = np.array(train_loss[moo_method])
+        test_loss[moo_method] = np.array(test_loss[moo_method])
 
     # print loss statistics
+    train_loss_mean = {}
+    test_loss_mean = {}
+    train_loss_std = {}
+    test_loss_std = {}
+
+    # calc means and std devs across seeds
     for moo_method in test_loss:
         print(f"\n{moo_method}")
         print("Number of seeds:", len(test_loss[moo_method]))
+        print("Mean of train losses:")
+        train_loss_mean_ = np.mean(train_loss[moo_method], axis=0)
+        train_loss_mean[moo_method] = copy.deepcopy(train_loss_mean_)
+        print(train_loss_mean_)
+        print("Std. dev of train losses:")
+        train_loss_std_ = np.std(train_loss[moo_method], axis=0)
+        train_loss_std[moo_method] = copy.deepcopy(train_loss_std_)
+        print(train_loss_std_)
         print("Mean of test losses:")
-        print(np.mean(np.array(test_loss[moo_method]), axis=0))
+        test_loss_mean_ = np.mean(test_loss[moo_method], axis=0)
+        test_loss_mean[moo_method] = copy.deepcopy(test_loss_mean_)
+        print(test_loss_mean_)
         print("Std. dev of test losses:")
-        print(np.std(np.array(test_loss[moo_method]), axis=0))
-        print(f"Mean of population error: {np.mean(np.array(pop_error[moo_method]))}")
-        print(f"St. dev. of population error: {np.std(np.array(pop_error[moo_method]))}")
-        print(f"Mean of optimization error: {np.mean(np.array(opt_error[moo_method]))}")
-        print(f"St. dev. of optimization error: {np.std(np.array(opt_error[moo_method]))}")
-        print(f"Mean of generalization error: {np.mean(np.array(gen_error[moo_method]))}")
-        print(f"St. dev. generalization error: {np.std(np.array(gen_error[moo_method]))}")
+        test_loss_std_ = np.std(test_loss[moo_method], axis=0)
+        test_loss_std[moo_method] = copy.deepcopy(test_loss_std_)
+        print(test_loss_std_)
         print()
-    print(pop_error)
-    print(opt_error)
-    print(gen_error)
+
+    epoch_list = 50*np.arange(num_epochs)
+    # plot
+    moo_method_color_list = ['#ffff99', '#386cb0', '#fdc086', '#beaed4']
+    moo_method_marker_list = ['o', '^', 'v', '*'] #['', '', '', ''] #
+    # iterate over losses
+    for i, loss in enumerate(loss_list):
+        # plot all methods in same plot (not plotting all losses together due to difference in magnitudes accross losses)
+        fig, ax = plt.subplots()
+        for j, moo_method in enumerate(moo_method_list):
+            k = 0# start index (to or not to ommit init loss)
+            # ax.scatter(epoch_list[k:][::2], test_loss_mean[moo_method][k:,i][::2], color=moo_method_color_list[j], 
+            #         marker=moo_method_marker_list[j], edgecolor='k', s=80)   
+            ax.plot(epoch_list[k:], train_loss_mean[moo_method][k:,i], color=moo_method_color_list[j], 
+                    linewidth=4)
+            ax.fill_between(epoch_list[k:], train_loss_mean[moo_method][k:,i] - train_loss_std[moo_method][k:,i], train_loss_mean[moo_method][k:,i] + train_loss_std[moo_method][k:,i], color=moo_method_color_list[j], alpha=0.5)
+            ax.plot(epoch_list[k:][::2], test_loss_mean[moo_method][k:,i][::2], moo_method_color_list[j], 
+                    linestyle='--', marker=moo_method_marker_list[j], markeredgecolor='k', markersize=15, linewidth=4)
+            ax.fill_between(epoch_list[k:], test_loss_mean[moo_method][k:,i] - test_loss_std[moo_method][k:,i], test_loss_mean[moo_method][k:,i] + test_loss_std[moo_method][k:,i], color=moo_method_color_list[j], alpha=0.5)
+     
+        # ax.plot(epoch_list[1:], test_loss_mean['EW'][1:,1], label="L1")
+        # ax.fill_between(epoch_list[1:], test_loss_mean['EW'][1:,1] - test_loss_std['EW'][1:,1], test_loss_mean['EW'][1:,1] + test_loss_std['EW'][1:,1], alpha=0.5)
+        # ax.plot(epoch_list[1:], test_loss_mean['EW'][1:,2], label="Hinge")
+        # ax.fill_between(epoch_list[1:], test_loss_mean['EW'][1:,2] - test_loss_std['EW'][1:,2], test_loss_mean['EW'][1:,2] + test_loss_std['EW'][1:,2], alpha=0.5)
+
+        train_handle = mlines.Line2D([], [], color='k',
+                          markersize=10, label='Train')
+        test_handle = mlines.Line2D([], [], color='k', linestyle='--', marker='s',
+                          markersize=10, label='Test')
+        ew_handle = mlines.Line2D([], [], color='#ffff99', marker='o', markeredgecolor='k',
+                          markersize=10, label='Mean')
+        mgda_handle = mlines.Line2D([], [], color='#386cb0', marker='^', markeredgecolor='k',
+                          markersize=10, label='MGDA')
+        moco_handle = mlines.Line2D([], [], color='#fdc086', marker='v', markeredgecolor='k',
+                          markersize=10, label='MoCo')
+        modo_handle = mlines.Line2D([], [], color='#beaed4', marker='*', markeredgecolor='k',
+                          markersize=10, label='MoDo')
+        if i==0:
+            ax.set_ylabel(f'Loss')
+        if i==2:
+            ax.legend(handles=[train_handle, test_handle, ew_handle, mgda_handle, moco_handle, modo_handle])
+        ax.set_xlabel(f'Epoch')
+        ax.set_xticks(epoch_list[::2])
+        ax.set_xticklabels([str(int(i)) for i in epoch_list[::2]])
+        plt.savefig(f'./figures/{loss}_method_comp.pdf', bbox_inches='tight') #pdf
+
+# plot loss and errors vs epoch
+def loss_error_plots():
+    # folder containing data logs for ablation
+    folder='./mo_loss_error_logs/'
+    file_list = os.listdir(folder)
+    num_epochs = 21
+
+    print(file_list)
+
+    # keywords used in comparisons
+    moo_method_list = ['EW', 'MGDA', 'MoCo', 'MoDo']
+    loss_list = ['Cross-entropy loss', 'L1 loss', 'Hinge loss']
+    error_type_list = ['pop', 'opt', 'gen']
+
+    # init lists to collect data from different seeds
+    train_loss = {moo_method:[] for moo_method in moo_method_list}
+    test_loss = {moo_method:[] for moo_method in moo_method_list}
+    error = {moo_method:[] for moo_method in moo_method_list}
+
+    # scrape the log files
+    for moo_method in moo_method_list:
+        for file in file_list:
+            if f'{moo_method}-' in file:
+                foo = open(folder+file)
+                lines = foo.read().split('\n')
+                train_epoch_loss_list = []
+                test_epoch_loss_list = []
+                error_epoch_list = []
+                for line in lines:
+                    # scrape test and training loss at each iteration from log file
+                    if ("Epoch" in line) and ("FORMAT" not in line):
+                        # print(line)
+                        train_loss_list, test_loss_list, error_list = line.strip().split(' | ')[1], line.strip().split(' | ')[2], line.strip().split(' | ')[3] 
+                        train_loss_list = [float(loss) for loss in train_loss_list.split(': ')[1].strip().split(' ')]
+                        test_loss_list = [float(loss) for loss in test_loss_list.split(': ')[1].strip().split(' ')]
+                        error_list = [float(error) for error in error_list.split(': ')[1].strip().split(' ')]
+                        # only consider the absolute generalization error
+                        error_list[-1] = abs(error_list[-1])
+                        train_epoch_loss_list.append(train_loss_list)
+                        test_epoch_loss_list.append(test_loss_list)
+                        error_epoch_list.append(error_list)
+                train_loss[moo_method].append(train_epoch_loss_list)
+                test_loss[moo_method].append(test_epoch_loss_list)
+                error[moo_method].append(error_epoch_list)
+        train_loss[moo_method] = np.array(train_loss[moo_method])
+        test_loss[moo_method] = np.array(test_loss[moo_method])
+        error[moo_method] = np.array(error[moo_method])
+
+    # print loss statistics
+    train_loss_mean = {}
+    test_loss_mean = {}
+    train_loss_std = {}
+    test_loss_std = {}
+    error_mean = {}
+    error_std = {}
+
+    # calc means and std devs across seeds
+    for moo_method in test_loss:
+        print(f"\n{moo_method}")
+        # silent print results from train losses, since these are not in the table
+        print("Number of seeds:", len(test_loss[moo_method]))
+        # print("Mean of train losses:")
+        train_loss_mean_ = np.mean(train_loss[moo_method], axis=0)
+        train_loss_mean[moo_method] = copy.deepcopy(train_loss_mean_)
+        # print(train_loss_mean_)
+        # print("Std. dev of train losses:")
+
+        # print final test loss and error statistics to be put in the table
+        train_loss_std_ = np.std(train_loss[moo_method], axis=0)
+        train_loss_std[moo_method] = copy.deepcopy(train_loss_std_)
+        # print(train_loss_std_)
+        print("Mean of test losses:")
+        test_loss_mean_ = np.mean(test_loss[moo_method], axis=0)
+        test_loss_mean[moo_method] = copy.deepcopy(test_loss_mean_)
+        print(test_loss_mean_[-1]*1000)
+        print("Std. dev of test losses:")
+        test_loss_std_ = np.std(test_loss[moo_method], axis=0)
+        test_loss_std[moo_method] = copy.deepcopy(test_loss_std_)
+        print(test_loss_std_[-1]*1000)
+        print("Mean of errors:")
+        error_mean_ = np.mean(error[moo_method], axis=0)
+        error_mean[moo_method] = copy.deepcopy(error_mean_)
+        print(error_mean_[-1]*1000)
+        print("Std. dev of errors:")
+        error_std_ = np.std(error[moo_method], axis=0)
+        error_std[moo_method] = copy.deepcopy(error_std_)
+        print(error_std_[-1]*1000)
+        print()
+
+    # flag to skip plotting MoCo results
+    skip_moco = True
+
+    epoch_list = 50*np.arange(num_epochs)
+    # plot
+    moo_method_color_list = ['#a65628', '#984ea3', '#4daf4a', '#377eb8'] # first ['#ffff99', '#386cb0', '#fdc086', '#beaed4']
+    moo_method_marker_list = ['o', '^', 'v', '*'] #['', '', '', ''] #
+    moo_method_name_list = ['Mean', 'MGDA', 'MoCo', 'MoDo']
+    # iterate over losses
+    for i, loss in enumerate(loss_list):
+        # plot all methods in same plot (not plotting all losses together due to difference in magnitudes accross losses)
+        fig, ax = plt.subplots()
+        for j, moo_method in enumerate(moo_method_list):
+            if skip_moco:
+                if moo_method=='MoCo':
+                    continue
+            k = 0# start index (to or not to ommit init loss)
+            ax.plot(epoch_list[k:], train_loss_mean[moo_method][k:,i], color=moo_method_color_list[j], 
+                    linewidth=4)
+            ax.fill_between(epoch_list[k:], train_loss_mean[moo_method][k:,i] - train_loss_std[moo_method][k:,i], train_loss_mean[moo_method][k:,i] + train_loss_std[moo_method][k:,i], color=moo_method_color_list[j], alpha=0.5)
+            ax.plot(epoch_list[k:][::2], test_loss_mean[moo_method][k:,i][::2], moo_method_color_list[j], 
+                    linestyle='--', marker=moo_method_marker_list[j], markeredgecolor='k', markersize=15, linewidth=4)
+            ax.fill_between(epoch_list[k:], test_loss_mean[moo_method][k:,i] - test_loss_std[moo_method][k:,i], test_loss_mean[moo_method][k:,i] + test_loss_std[moo_method][k:,i], color=moo_method_color_list[j], alpha=0.5)
+
+        train_handle = mlines.Line2D([], [], color='k',
+                          markersize=10, label='Train')
+        test_handle = mlines.Line2D([], [], color='k', linestyle='--', marker='s',
+                          markersize=10, label='Test')
+        ew_handle = mlines.Line2D([], [], color='#a65628', marker='o', markeredgecolor='k',
+                          markersize=10, label='Mean')
+        mgda_handle = mlines.Line2D([], [], color='#984ea3', marker='^', markeredgecolor='k',
+                          markersize=10, label='MGDA')
+        moco_handle = mlines.Line2D([], [], color='#4daf4a', marker='v', markeredgecolor='k',
+                          markersize=10, label='MoCo')
+        modo_handle = mlines.Line2D([], [], color='#377eb8', marker='*', markeredgecolor='k',
+                          markersize=10, label='MoDo')
+        if i==0:
+            ax.set_ylabel(f'Loss', fontsize=18)
+        if i==2:
+            if skip_moco:
+                ax.legend(handles=[train_handle, test_handle, ew_handle, mgda_handle, modo_handle], fontsize=18)
+            else:
+                ax.legend(handles=[train_handle, test_handle, ew_handle, mgda_handle, moco_handle, modo_handle], fontsize=18)
+        ax.set_xlabel(f'Epoch', fontsize=18)
+        ax.set_xticks(epoch_list[::4])
+        ax.set_xticklabels([str(int(i)) for i in epoch_list[::4]])
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        if skip_moco:
+            plt.savefig(f'./figures/{loss}_method_comp_no_moco.pdf', bbox_inches='tight')
+        else:
+            plt.savefig(f'./figures/{loss}_method_comp.pdf', bbox_inches='tight')
+
+    moo_method_color_list = ['#a65628', '#984ea3', '#4daf4a', '#377eb8']
+    moo_method_marker_list = ['o', '^', 'v', '*'] #['', '', '', ''] #
+
+    # iterate over losses
+    for i, error_type in enumerate(error_type_list):
+        # plot all methods in same plot (not plotting all losses together due to difference in magnitudes accross losses)
+        fig, ax = plt.subplots()
+        for j, moo_method in enumerate(moo_method_list):
+            if skip_moco:
+                if moo_method=='MoCo':
+                    continue
+            k = 0# start index (to or not to ommit init loss)
+            ax.errorbar(epoch_list[k:], error_mean[moo_method][k:,i], error_std[moo_method][k:,i], 
+                        fmt=moo_method_marker_list[j]+'-', capsize=5, 
+                        color=moo_method_color_list[j], markeredgecolor='k', markersize=5, label=moo_method_name_list[j])
+            ax.plot(epoch_list[k:], error_mean[moo_method][k:,i], color=moo_method_color_list[j], 
+                    markeredgecolor='k', markersize=15, linewidth=4)
+            ax.fill_between(epoch_list[k:], error_mean[moo_method][k:,i] - error_std[moo_method][k:,i], error_mean[moo_method][k:,i] + error_std[moo_method][k:,i], 
+                            color=moo_method_color_list[j], alpha=0.5)
+
+        if i==0:
+            ax.set_ylabel(f'Error', fontsize=18)
+        if i==2:
+            ax.legend()
+        ax.set_xlabel(f'Epoch', fontsize=18)
+        ax.set_xticks(epoch_list[::4])
+        ax.set_xticklabels([str(int(i)) for i in epoch_list[::4]])
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        if skip_moco:
+            plt.savefig(f'./figures/{error_type}_error_method_comp_no_moco.pdf', bbox_inches='tight')
+        else:
+            plt.savefig(f'./figures/{error_type}_error_method_comp.pdf', bbox_inches='tight')
     
 if __name__=='__main__':    
     # rho ablation
-    # rho_ablation(plot_type='gen')
+    # rho_ablation(plot_type='pop_opt')
 
     # gamma ablation
-    gamma_ablation(plot_type='pop_opt')
+    # gamma_ablation(plot_type='gen')
+
+    # hp ablation (gamma, rho, lr)
+    hp_ablation(plot_type='all', hp_type='gamma')
 
     # perf. metric calc.
     # loss_calc()
+
+    # plot loss curves
+    # loss_plots()
+
+    # plot loss and error (pop, opt, and gen) curves
+    # loss_error_plots()

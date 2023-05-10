@@ -1,0 +1,15 @@
+========================================
+General Configuration:
+	Wighting: ITL
+	Architecture: HPS
+	Rep_Grad: False
+	Multi_Input: True
+	Seed: 0
+	Device: cuda:0
+ITL Configuration:
+	weighting: ITL
+	task_idx: 0
+Optimizer Configuration:
+	optim: adam
+	lr: 0.0001
+	weight_decay: 0.001

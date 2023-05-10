@@ -59,9 +59,8 @@ _parser.add_argument('--gamma_modo', type=float, default=0.1, help='learning rat
 _parser.add_argument('--rho_modo', type=float, default=0.1, help='regularization parameter')
 _parser.add_argument('--modo_gn', default='none', type=str, 
                     help='type of gradient normalization for MoDo, option: l2, none, loss, loss+')
-## PW
-_parser.add_argument('--pref_weights', type=tuple, default=None, help='fixed preference weitghts to \
-                     each task, defaults to equal weights')
+## ITL
+_parser.add_argument('--task_idx', type=int, default=0, help='task index for dedicated learning')
 
 # args for architecture
 ## CGC
@@ -83,7 +82,7 @@ def prepare_args(params):
     kwargs = {'weight_args': {}, 'arch_args': {}}
     if params.weighting in ['EW', 'UW', 'GradNorm', 'GLS', 'RLW', 'MGDA', 'IMTL',
                             'PCGrad', 'GradVac', 'CAGrad', 'GradDrop', 'DWA', 'Nash_MTL', 
-                            'MoCo', 'MoDo', 'PW']:
+                            'MoCo', 'MoDo', 'ITL']:
         # add weighting type name as a kwarg (useful for MoDo)
         kwargs['weight_args']['weighting'] = params.weighting
         if params.weighting in ['DWA']:
@@ -148,18 +147,11 @@ def prepare_args(params):
                     raise ValueError('No support modo_gn {} for MoDo'.format(params.modo_gn)) 
             else:
                 raise ValueError('MoDo needs gamma_modo, rho_modo, and modo_gn')
-        elif params.weighting in ['PW']: # TODO: Handle input preference weights
-            if params.pref_weights is None:
-                kwargs['weight_args']['pref_weights'] = np.ones()
-            if params.pref_weights is not None:
-                kwargs['weight_args']['pref_weights'] = params.gamma_modo
-                kwargs['weight_args']['rho_modo'] = params.rho_modo
-                if params.modo_gn in ['none', 'l2', 'loss', 'loss+']:
-                    kwargs['weight_args']['modo_gn'] = params.modo_gn
-                else:
-                    raise ValueError('No support modo_gn {} for MoDo'.format(params.modo_gn)) 
+        elif params.weighting in ['ITL']: # TODO: Handle input preference weights
+            if params.task_idx is not None:
+                kwargs['weight_args']['task_idx'] = params.task_idx
             else:
-                raise ValueError('MoDo needs gamma_modo, rho_modo, and modo_gn')
+                raise ValueError('ITL needs task_idx')
     else:
         raise ValueError('No support weighting method {}'.format(params.weighting)) 
         

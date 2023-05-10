@@ -58,14 +58,27 @@ def grad_modo(grad_list, **kwargs):
     gamma = kwargs['MoDo']['gamma']
     rho = kwargs['MoDo']['rho']
 
+    # check whether this script use 2 or 3 samples
+    double_sample =  True
+    if 'num_samples' in kwargs['MoDo']:
+        num_samples = kwargs['MoDo']['num_samples']
+        if num_samples == 3:
+            double_sample =  False
+
     # grad_list for MoDo contains two gradients
-    grad1, grad2 = grad_list
+    if double_sample:
+        grad1, grad2 = grad_list
+    else:
+        grad1, grad2, grad3 = grad_list
 
     # update lambda
     lambd =  projection2simplex( lambd - gamma * ( grad1 @ ( torch.transpose(grad2, 0, 1) @ lambd )  + rho * lambd ) )
     
     # compute multi-grad
-    grad_ =  0.5 * lambd @ (grad1 + grad2)
+    if double_sample:
+        grad_ =  0.5 * lambd @ (grad1 + grad2)
+    else:
+        grad_ = lambd @ grad3
 
     # update lambda
     kwargs['MoDo']['lambd'] = lambd

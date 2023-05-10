@@ -14,6 +14,7 @@ from LibMTL.weighting.Nash_MTL import Nash_MTL
 from LibMTL.weighting.RLW import RLW
 from LibMTL.weighting.MoCo import MoCo
 from LibMTL.weighting.MoDo import MoDo
+from LibMTL.weighting.ITL import ITL
 
 __all__ = ['AbsWeighting',
            'EW', 
@@ -30,4 +31,5 @@ __all__ = ['AbsWeighting',
            'Nash_MTL',
            'RLW',
            'MoCo',
-           'MoDo']
+           'MoDo',
+           'ITL']

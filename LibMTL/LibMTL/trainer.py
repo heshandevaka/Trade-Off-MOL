@@ -91,8 +91,16 @@ class Trainer(nn.Module):
 
         self._prepare_model(weighting, architecture, encoder_class, decoders)
         self._prepare_optimizer(optim_param, scheduler_param)
+
+        # set base results to compute average performance gap
+        if list(self.task_dict.keys()) == ['amazon', 'dslr', 'webcam']:
+            self.base_result = {'amazon':0.875, 'dslr':0.9888, 'webcam':0.9732} #manually obtained
+        elif list(self.task_dict.keys()) == ['Art', 'Clipart', 'Product', 'Real_World']:
+            self.base_result = {'Art':1., 'Clipart':1., 'Product':1., 'Real_World':1.} #TODO: calc these values
+        else:
+            self.base_result = None
         
-        self.meter = _PerformanceMeter(self.task_dict, self.multi_input)
+        self.meter = _PerformanceMeter(self.task_dict, self.multi_input, self.base_result)
         
     def _prepare_model(self, weighting, architecture, encoder_class, decoders):
         

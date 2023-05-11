@@ -1110,3 +1110,498 @@ python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.001 --
 python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.005 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.005-rho-0.0.out
 ./run_gamma_ablation_modo.sh: 19: Syntax error: "done" unexpected
 python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.005 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.005-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.005 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.005-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.005 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.005-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.05 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.05-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.1 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.1-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.5 --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.5-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-0-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-1-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-2-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-3-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-4-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-5-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-6-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-7-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-8-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 1. --rho_modo 0.0 > modo_gamma_ablation_logs/MoDo-seed-9-lr-0.1-gamma-1.-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.001-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.005-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.01-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.05-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.5-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-1.-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/Toy-MNIST/toy_fast.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-0-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-1-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-2-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-3-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-4-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-5-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-6-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-7-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-8-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_logs/MoDo-seed-9-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.001 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-0.001-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.005 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-0.005-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.01 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-0.01-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.05-gamma-0.01-rho-0.0.out

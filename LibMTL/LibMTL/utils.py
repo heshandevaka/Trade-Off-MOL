@@ -64,6 +64,7 @@ def count_improvement(base_result, new_result, weight):
 
         print(count_improvement(base_result, new_result, weight))
     """
+    # print(base_result, new_result)
     improvement = 0
     count = 0
     for task in list(base_result.keys()):

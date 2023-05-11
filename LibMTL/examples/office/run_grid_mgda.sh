@@ -5,11 +5,11 @@ seed=0
 gpu_id=0
 
 LR_SET="1e-3 1e-2 1e-1"
-# WEIGHT_DECAY_SET="1e-7 1e-6 1e-5 1e-4 1e-3 1e-2"
+WEIGHT_DECAY_SET="1e-7 1e-6 1e-5"
 
 for lr in $LR_SET; do
-    # for weight_decay in $WEIGHT_DECAY_SET; do
-        echo "python -u train_office.py --multi_input --seed $seed --gpu_id $gpu_id --dataset_path $dataset_path --weighting $weighting  --lr $lr  > hp_grid_logs/$weighting-seed-$seed-lr-$lr.out"
-        python -u train_office.py --multi_input --seed $seed --gpu_id $gpu_id --dataset_path $dataset_path --weighting $weighting  --lr $lr  > hp_grid_logs/$weighting-seed-$seed-lr-$lr.out
-    # done
+    for weight_decay in $WEIGHT_DECAY_SET; do
+        echo "python -u train_office.py --multi_input --seed $seed --gpu_id $gpu_id --dataset_path $dataset_path --weighting $weighting --weight_decay $weight_decay --lr $lr  > hp_grid_logs/$weighting-seed-$seed-lr-$lr-weight_decay-$weight_decay.out"
+        python -u train_office.py --multi_input --seed $seed --gpu_id $gpu_id --dataset_path $dataset_path --weighting $weighting --weight_decay $weight_decay --lr $lr  > hp_grid_logs/$weighting-seed-$seed-lr-$lr-weight_decay-$weight_decay.out
+    done
 done

@@ -1,0 +1,37 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=0.01, lr=0.05, moo_method='MoDo', num_epochs=1000, rho_moco=0.1, rho_modo=0.0, seed=9)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+======================================================================
+LOG FORMAT: Epoch: EPOCH | Train: LOSS1 LOSS2 LOSS3
+======================================================================
+Epoch:      0 | Train: 2.3852 0.1812 0.9629
+Epoch:    100 | Train: 0.7895 0.0924 0.1062
+Epoch:    200 | Train: 0.6585 0.0778 0.0731
+Epoch:    300 | Train: 0.4422 0.0576 0.0503
+Epoch:    400 | Train: 0.4797 0.0509 0.0722
+Epoch:    500 | Train: 0.3556 0.0482 0.0276
+Epoch:    600 | Train: 0.532 0.0557 0.1002
+Epoch:    700 | Train: 0.4295 0.0483 0.0564
+Epoch:    800 | Train: 0.4545 0.0507 0.0723
+Epoch:    900 | Train: 0.3088 0.0389 0.0301
+Epoch:    999 | Train: 0.6151 0.0493 0.1467
+
+======================================================================
+PERF FORMAT: DATASET | Acuracy: ACC | Loss: LOSS1 LOSS2 LOSS3 | PS: PS
+======================================================================
+Train | Acuracy:  89.66% | Loss: 0.37686 0.0416 0.05699 | PS: 0.01986 
+Val   | Acuracy:  89.60% | Loss: 0.37999 0.04163 0.05788 | PS: 0.02188 
+Test  | Acuracy:  90.10% | Loss: 0.35946 0.03992 0.05416 | PS: 0.02442 
+----------------------------------------------------------------------
+Optimization error  : 0.01986
+Population error    : 0.02442
+Generalization error: 0.00456

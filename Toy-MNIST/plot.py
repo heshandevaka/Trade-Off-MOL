@@ -216,33 +216,83 @@ def hp_ablation(plot_type='gen', hp_type='gamma'):
     hp_list = [float(hp) for hp in hp_list]
 
     ax.set_xscale("log")
-    std_scale = 1.0
+    opt_color = np.array([84,172,108])/255 # green
+    pop_color = np.array([70,70,70])/255 # grey
+    gen_color = np.array([196,78,82])/255 # red
     # ax.set_yscale("log") # not useful since all errors are in similar order
     if plot_type=='pop_opt':
+        std_scale = 0.5
         ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
-                    color='b',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
-        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o-', capsize=5, 
-                    color='r',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)
         ax.set_ylabel('Error', fontsize=18)
+        ax.set_xlabel(hp_label, fontsize=18)
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.legend(fontsize=18)
     if plot_type=='gen':
+        std_scale = 0.5
         ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
-                     color='g',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')
+        ax.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax.set_xlabel(hp_label, fontsize=18)
+        # if hp_type=='gamma':
+        #     ax.set_ylim([0.0005, 0.004])
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.legend(fontsize=18)
         # ax.set_ylabel('Absolute generalization error', fontsize=15)
     if plot_type=='all':
+        std_scale = 1.0
         ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
-                    color='b',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
-        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o-', capsize=5, 
-                    color='r',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')     
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')  
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)   
         ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
-                     color='g',markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
         ax.set_ylabel('Error', fontsize=18)
-    ax.set_xlabel(hp_label, fontsize=18)
-    if plot_type=='gen' and hp_type=='gamma':
-        ax.set_ylim([0.0005, 0.004])
-    plt.xticks(fontsize=15)
-    plt.yticks(fontsize=15)
-    plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
-    ax.legend(fontsize=18)
+        ax.set_xlabel(hp_label, fontsize=18)
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.legend(fontsize=18)
+    # use left and right sides to plot opt-pop and gen in different scales
+    if plot_type=='all-diff-scale':
+        std_scale = 0.5
+        opt_handle = ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        pop_handle = ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')  
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)  
+        ax2 = ax.twinx() # instantiate a second axes that shares the same x-axis
+        gen_handle = ax2.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax2.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax.tick_params(axis='both', which='major', labelsize=15)
+        ax2.tick_params(axis='y', which='major', labelsize=15, labelcolor=gen_color)
+        ax2.set_ylabel('Generalization', fontsize=18)
+        ax2.yaxis.label.set_color(gen_color)
+        ax.set_ylabel('Population/Optimization', fontsize=18)
+        ax2.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.set_xlabel(hp_label, fontsize=18)
+        plt.legend(handles=[opt_handle, pop_handle, gen_handle], fontsize=18)
+        # ax.set_ylabel('Error', fontsize=18)
+    # ax.set_xlabel(hp_label, fontsize=18)
+    # if plot_type=='gen' and hp_type=='gamma':
+    #     ax.set_ylim([0.0005, 0.004])
+    # plt.xticks(fontsize=15)
+    # plt.yticks(fontsize=15)
+    # plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
     plt.savefig(f'./figures/{hp_type}_{plot_type}_err_comp.pdf', bbox_inches='tight')
 
 # calc final loss and errors for methods
@@ -583,7 +633,7 @@ if __name__=='__main__':
     # gamma_ablation(plot_type='gen')
 
     # hp ablation (gamma, rho, lr)
-    hp_ablation(plot_type='all', hp_type='gamma')
+    hp_ablation(plot_type='all-diff-scale', hp_type='gamma')
 
     # perf. metric calc.
     # loss_calc()

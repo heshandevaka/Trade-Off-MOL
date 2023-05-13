@@ -34,10 +34,10 @@ parser.add_argument('--gpu_id', default='0', type=str, help='gpu_id')
 # MoCo
 parser.add_argument('--beta_moco', type=float, default=0.1, help='learning rate of tracking variable')
 parser.add_argument('--gamma_moco', type=float, default=0.1, help='learning rate of lambda')
-parser.add_argument('--rho_moco', type=float, default=0.1, help='regularization parameter of lambda subproblem')
+parser.add_argument('--rho_moco', type=float, default=0.0, help='regularization parameter of lambda subproblem')
 # MoDo
 parser.add_argument('--gamma_modo', type=float, default=0.1, help='learning rate of lambda')
-parser.add_argument('--rho_modo', type=float, default=0.1, help='regularization parameter')
+parser.add_argument('--rho_modo', type=float, default=0.0, help='regularization parameter')
 
 # parse args
 params = parser.parse_args()

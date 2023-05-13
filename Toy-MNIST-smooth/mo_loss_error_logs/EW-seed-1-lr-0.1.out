@@ -1,0 +1,17 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=0.1, lr=0.1, moo_method='EW', num_epochs=1000, rho_moco=0.0, rho_modo=0.0, seed=1)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+====================================================================================================
+LOG FORMAT: Epoch: EPOCH | Train: LOSS1 LOSS2 LOSS3 | Test: LOSS1 LOSS2 LOSS3 | Error: POP OPT GEN
+====================================================================================================
+Epoch:      0 | Train: 2.3577 0.0911 0.0131 | Test: 2.3601 0.0912 0.0132 | Error: 0.00341 0.00327 0.00014
+Epoch:     50 | Train: 0.7819 0.0344 0.0066 | Test: 0.7576 0.0334 0.0064 | Error: 0.00602 0.00594 8e-05

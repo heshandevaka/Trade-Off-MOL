@@ -4,7 +4,7 @@ weighting=MGDA
 seed=0
 gpu_id=0
 
-LR_SET="1e-3 1e-2 1e-1"
+LR_SET="1e-4"
 WEIGHT_DECAY_SET="1e-7 1e-6 1e-5"
 
 for lr in $LR_SET; do

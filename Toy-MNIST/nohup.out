@@ -1605,3 +1605,125 @@ python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.01 --gamma_modo
 python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.05-gamma-0.01-rho-0.0.out
 python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.05-gamma-0.01-rho-0.0.out
 python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.05 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-0.05-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-0.1-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 0.5 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-0.5-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 0 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-0-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 1 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-1-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 > modo_T_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-T-10 50 100 500 1000 5000 10000.out
+python -u toy_fast_3sample.py --seed 2 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-2-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 > modo_T_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-T-10 50 100 500 1000 5000 10000.out
+python -u toy_fast_3sample.py --seed 3 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-3-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 4 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-4-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 5 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-5-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_fast_3sample.py --seed 6 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-6-lr-1.-gamma-0.01-rho-0.0.out
+./run_T_ablation_modo.sh: 7: Syntax error: "(" unexpected
+./run_T_ablation_modo.sh: 7: Syntax error: "(" unexpected
+python -u toy_fast_3sample.py --seed 7 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-7-lr-1.-gamma-0.01-rho-0.0.out
+./run_T_ablation_modo.sh: 7: Syntax error: "(" unexpected
+./run_T_ablation_modo.sh: 7: Syntax error: "(" unexpected
+python -u toy_fast_3sample.py --seed 8 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-8-lr-1.-gamma-0.01-rho-0.0.out
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+python -u toy_T_ablation.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: line 16: $folder/$moo_method-seed-$seed-lr-$lr-gamma-$gamma-T-${T_SET[*]}.out: ambiguous redirect
+400
+0 10 2 3 400
+python -u toy_fast_3sample.py --seed 9 --moo_method MoDo  --lr 1. --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_3samples_logs/MoDo-seed-9-lr-1.-gamma-0.01-rho-0.0.out
+mkdir: missing operand
+Try 'mkdir --help' for more information.
+./run_T_ablation_modo.sh: 7: Syntax error: "(" unexpected
+mkdir: missing operand
+Try 'mkdir --help' for more information.
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-0-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-0-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-1-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-1-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-2-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-2-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-3-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-3-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-4-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-4-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-5-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-5-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-6-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-6-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-7-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-7-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-8-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-8-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-9-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-9-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+mkdir: missing operand
+Try 'mkdir --help' for more information.
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-0-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-0-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-1-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-1-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-2-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-2-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-3-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-3-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-4-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-4-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-5-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-5-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-6-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-6-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-7-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-7-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-8-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-8-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > /MoDo-seed-9-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+./run_T_ablation_modo.sh: 15: cannot create /MoDo-seed-9-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out: Permission denied
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-0-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-1-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-2-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-3-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-4-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-5-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-6-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-7-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-8-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out
+python -u toy_T_ablation.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_logs/MoDo-seed-9-lr-0.1-gamma-0.01-T-10 100 1000 500 1000 5000 10000.out

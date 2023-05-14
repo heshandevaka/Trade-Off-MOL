@@ -16,3 +16,22 @@ LOG FORMAT: Epoch: EPOCH | Train: LOSS1 LOSS2 LOSS3
 Epoch:      0 | Train: 2.389 0.0916 0.0132
 Epoch:    100 | Train: 0.6447 0.0299 0.0057
 Epoch:    200 | Train: 0.4496 0.02 0.0042
+Epoch:    300 | Train: 0.4163 0.018 0.0037
+Epoch:    400 | Train: 0.369 0.0142 0.0031
+Epoch:    500 | Train: 0.5185 0.0226 0.0041
+Epoch:    600 | Train: 0.3224 0.0151 0.003
+Epoch:    700 | Train: 0.4588 0.0196 0.0032
+Epoch:    800 | Train: 0.3394 0.012 0.0024
+Epoch:    900 | Train: 0.2539 0.0125 0.0024
+Epoch:    999 | Train: 0.3581 0.0198 0.0034
+
+======================================================================
+PERF FORMAT: DATASET | Acuracy: ACC | Loss: LOSS1 LOSS2 LOSS3 | PS: PS
+======================================================================
+Train | Acuracy:  89.70% | Loss: 0.36765 0.01593 0.0028 | PS: 0.00186 
+Val   | Acuracy:  89.19% | Loss: 0.38032 0.01657 0.00287 | PS: 0.00178 
+Test  | Acuracy:  90.31% | Loss: 0.3546 0.0152 0.00269 | PS: 0.00181 
+----------------------------------------------------------------------
+Optimization error  : 0.00186
+Population error    : 0.00181
+Generalization error: -4e-05

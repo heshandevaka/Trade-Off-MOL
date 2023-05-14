@@ -2460,3 +2460,181 @@ python -u toy_loss_error.py --seed 1 --moo_method MGDA  --lr 1.0  > mo_loss_erro
 python -u toy_loss_error.py --seed 2 --moo_method MoDo  --lr 1. --gamma_modo 1. --rho_modo 0.0 > mo_loss_error_logs/MoDo-seed-2-lr-1.-gamma-1.-rho-0.0.out
 python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.075 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-4-lr-0.1-gamma-0.075-rho-0.0.out
 python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.075 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-4-lr-0.075-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.075 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-5-lr-0.1-gamma-0.075-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.075 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-5-lr-0.075-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.075 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-6-lr-0.1-gamma-0.075-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.075 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-6-lr-0.075-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.075 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-7-lr-0.1-gamma-0.075-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.075 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-7-lr-0.075-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-b4_5pvk5'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.075 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-8-lr-0.1-gamma-0.075-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.075 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-8-lr-0.075-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.075 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-9-lr-0.1-gamma-0.075-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.075 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-9-lr-0.075-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-0-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-0-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-1-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-1-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-2-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-2-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-3-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-3-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-4-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-4-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-5-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-5-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-6-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-6-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-7-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-7-lr-0.25-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-gmzgj2fd'
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-8-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-8-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-9-lr-0.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-9-lr-0.1-gamma-0.25-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-0-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-0-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-1-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-1-lr-0.1-gamma-0.75-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-d_h590sq'
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-v_0cgg46'
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-2-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-2-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-3-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-3-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-4-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-4-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-5-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-5-lr-0.1-gamma-0.75-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-nvlqckyr'
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-6-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-6-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-7-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-7-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-8-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-8-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.75 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-9-lr-0.75-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 0.75 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-9-lr-0.1-gamma-0.75-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-0-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 0 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-0-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-1-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-1-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-2-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 2 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-2-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-3-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-3-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-4-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 4 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-4-lr-1.25-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-tlqv_zkq'
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-5-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 5 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-5-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-6-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 6 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-6-lr-1.25-gamma-0.01-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-6bhl8pgc'
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-7-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 7 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-7-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-8-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 8 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-8-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 1.25 --gamma_modo 0.01 --rho_modo 0.0 > modo_lr_ablation_new_logs/MoDo-seed-9-lr-1.25-gamma-0.01-rho-0.0.out
+python -u toy_fast.py --seed 9 --moo_method MoDo  --lr 0.1 --gamma_modo 1.25 --rho_modo 0.0 > modo_gamma_ablation_new_logs/MoDo-seed-9-lr-0.1-gamma-1.25-rho-0.0.out
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_new_logs/MoDo-seed-0-lr-0.1-gamma-0.01-T-10 25 50 75 100 250 500 750 1000 2500 5000 7500 10000.out
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 10000 > modo_T_ablation_new_logs/MoDo-seed-1-lr-0.1-gamma-0.01-T-10 25 50 75 100 250 500 750 1000 2500 5000 7500 10000.out
+python -u toy_T_ablation.py --seed 0 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 100000 > modo_T_ablation_new_logs/MoDo-seed-0-lr-0.1-gamma-0.01-T-10-100000.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-cvk79sgk'
+python -u toy_T_ablation.py --seed 1 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 100000 > modo_T_ablation_new_logs/MoDo-seed-1-lr-0.1-gamma-0.01-T-10-100000.out
+python -u toy_T_ablation.py --seed 2 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 100000 > modo_T_ablation_new_logs/MoDo-seed-2-lr-0.1-gamma-0.01-T-10-100000.out
+python -u toy_T_ablation.py --seed 3 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 100000 > modo_T_ablation_new_logs/MoDo-seed-3-lr-0.1-gamma-0.01-T-10-100000.out
+python -u toy_T_ablation.py --seed 4 --moo_method MoDo  --lr 0.1 --gamma_modo 0.01 --num_epoch 100000 > modo_T_ablation_new_logs/MoDo-seed-4-lr-0.1-gamma-0.01-T-10-100000.out
+python -u toy_descent_error.py --seed 0 --moo_method EW  --lr 0.1  > mo_descent_error_logs/EW-seed-0-lr-0.1.out
+python -u toy_descent_error.py --seed 1 --moo_method MoDo  --lr 1. --gamma_modo 1. --rho_modo 0.0 > mo_descent_error_logs/MoDo-seed-1-lr-1.-gamma-1.-rho-0.0.out
+python -u toy_descent_error.py --seed 0 --moo_method MGDA  --lr 5.0  > mo_descent_error_logs/MGDA-seed-0-lr-5.0.out
+python -u toy_descent_error.py --seed 1 --moo_method MGDA  --lr 5.0  > mo_descent_error_logs/MGDA-seed-1-lr-5.0.out
+python -u toy_descent_error.py --seed 1 --moo_method EW  --lr 0.1  > mo_descent_error_logs/EW-seed-1-lr-0.1.out

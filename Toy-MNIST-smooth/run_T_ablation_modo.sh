@@ -4,8 +4,8 @@ moo_method=MoDo
 
 LR_SET="0.1"
 GAMMA_SET="0.01"
-T_SET="10 50 100 500 1000 5000 10000 50000 100000"
-T_max=10000
+T_SET="10-100000"
+T_max=100000
 SEED_SET="0 1 2 3 4 5 6 7 8 9"
 
 for lr in $LR_SET; do

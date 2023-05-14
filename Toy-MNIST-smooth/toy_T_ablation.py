@@ -306,7 +306,7 @@ kwargs = {'EW':{}, 'MGDA':{}, 'MoCo':moco_kwargs, 'MoDo':modo_kwargs}
 optimizer = optim.SGD(model.parameters(), lr=lr)
 
 # T ablation list
-T_list = [10, 100, 1000, 500, 1000, 5000, 10000]
+T_list = [10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 25000, 50000, 75000, 100000]
 
 # print log format
 print("\n"+"="*100)

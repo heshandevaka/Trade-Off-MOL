@@ -2638,3 +2638,16 @@ python -u toy_descent_error.py --seed 1 --moo_method MoDo  --lr 1. --gamma_modo 
 python -u toy_descent_error.py --seed 0 --moo_method MGDA  --lr 5.0  > mo_descent_error_logs/MGDA-seed-0-lr-5.0.out
 python -u toy_descent_error.py --seed 1 --moo_method MGDA  --lr 5.0  > mo_descent_error_logs/MGDA-seed-1-lr-5.0.out
 python -u toy_descent_error.py --seed 1 --moo_method EW  --lr 0.1  > mo_descent_error_logs/EW-seed-1-lr-0.1.out
+python -u toy_descent_error.py --seed 2 --moo_method MoDo  --lr 1. --gamma_modo 1. --rho_modo 0.0 > mo_descent_error_logs/MoDo-seed-2-lr-1.-gamma-1.-rho-0.0.out
+Traceback (most recent call last):
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/hdf/anaconda3/envs/toy-mnist/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-x28wkvxb'

@@ -263,7 +263,7 @@ def hp_ablation(plot_type='gen', hp_type='gamma'):
         plt.xticks(fontsize=15)
         plt.yticks(fontsize=15)
         plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
-        if hp_type=='lr':
+        if hp_type=='gamma':
             ax.legend(fontsize=18)
     # use left and right sides to plot opt-pop and gen in different scales
     if plot_type=='all-diff-scale':
@@ -286,8 +286,8 @@ def hp_ablation(plot_type='gen', hp_type='gamma'):
         ax2.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
         ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
         ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
-        if hp_type=='lr':
-            plt.legend(handles=[opt_handle, pop_handle, gen_handle], fontsize=18)
+        if hp_type=='gamma':
+            plt.legend(loc='center right', handles=[opt_handle, pop_handle, gen_handle], fontsize=18)
         # ax.set_ylabel('Error', fontsize=18)
     # ax.set_xlabel(hp_label, fontsize=18)
     # if plot_type=='gen' and hp_type=='gamma':
@@ -453,7 +453,7 @@ def loss_plots():
 # plot loss and errors vs epoch
 def loss_error_plots():
     # folder containing data logs for ablation
-    folder='./mo_loss_error_logs/'
+    folder='./mo_loss_error_new_logs/'
     file_list = os.listdir(folder)
     num_epochs = 21
 
@@ -613,12 +613,13 @@ def loss_error_plots():
             ax.plot(epoch_list[k:], error_mean[moo_method][k:,i], color=moo_method_color_list[j], 
                     markeredgecolor='k', markersize=15, linewidth=4)
             ax.fill_between(epoch_list[k:], error_mean[moo_method][k:,i] - error_std[moo_method][k:,i], error_mean[moo_method][k:,i] + error_std[moo_method][k:,i], 
-                            color=moo_method_color_list[j], alpha=0.5)
+                            color=moo_method_color_list[j], alpha=0.25)
 
         if i==0:
             ax.set_ylabel(f'Error', fontsize=18)
         if i==2:
-            ax.legend()
+            pass
+            # ax.legend() # moved the legend to descent direction plot
         ax.set_xlabel(f'Epoch', fontsize=18)
         ax.set_xticks(epoch_list[::4])
         ax.set_xticklabels([str(int(i)) for i in epoch_list[::4]])
@@ -629,6 +630,98 @@ def loss_error_plots():
             plt.savefig(f'./figures/{error_type}_error_method_comp_no_moco.pdf', bbox_inches='tight')
         else:
             plt.savefig(f'./figures/{error_type}_error_method_comp.pdf', bbox_inches='tight')
+
+# plot descent direction error vs epoch
+def descent_error_plots():
+    # folder containing data logs for ablation
+    folder='./mo_descent_error_new_logs/'
+    file_list = os.listdir(folder)
+    num_epochs = 21
+
+    print(file_list)
+
+    # keywords used in comparisons
+    moo_method_list = ['EW', 'MGDA', 'MoCo', 'MoDo'] #, 'MGDA', 'MoCo'
+    loss_list = ['Cross-entropy', 'MSE', 'Huber']
+
+    # init lists to collect data from different seeds
+    descent_error = {moo_method:[] for moo_method in moo_method_list}
+
+    # scrape the log files
+    for moo_method in moo_method_list:
+        for file in file_list:
+            if f'{moo_method}-' in file:
+                foo = open(folder+file)
+                lines = foo.read().split('\n')
+                descent_error_epoch_list = []
+                for line in lines:
+                    # scrape test and training loss at each iteration from log file
+                    if ("Epoch" in line) and ("FORMAT" not in line):
+                        print(line)
+                        descent_error_ = float(line.split(': ')[2].strip())
+                        print(descent_error_)
+                        descent_error_epoch_list.append(descent_error_)
+                descent_error[moo_method].append(descent_error_epoch_list)
+        descent_error[moo_method] = np.array(descent_error[moo_method])
+
+    # print loss statistics
+    descent_error_mean = {}
+    descent_error_std = {}
+
+    # flag to skip plotting MoCo results
+    skip_moco = True
+
+    # calc means and std devs across seeds
+    for moo_method in descent_error:
+        if skip_moco:
+            if moo_method=='MoCo':
+                continue
+        print(f"\n{moo_method}")
+        # silent print results from train losses, since these are not in the table
+        print("Number of seeds:", len(descent_error[moo_method]))
+        print("Mean of errors:")
+        descent_error_mean_ = np.mean(descent_error[moo_method], axis=0)
+        descent_error_mean[moo_method] = copy.deepcopy(descent_error_mean_)
+        print(descent_error_mean_[-1]*1000)
+        print("Std. dev of errors:")
+        descent_error_std_ = np.std(descent_error[moo_method], axis=0)
+        descent_error_std[moo_method] = copy.deepcopy(descent_error_std_)
+        print(descent_error_std_[-1]*1000)
+        print()
+
+    moo_method_color_list = ['#a65628', '#984ea3', '#4daf4a', '#377eb8']
+    moo_method_marker_list = ['o', '^', 'v', '*'] #['', '', '', ''] #
+    moo_method_name_list = ['Mean', 'MGDA', 'MoCo', 'MoDo']
+
+    epoch_list = 50*np.arange(num_epochs)
+
+    # plot all methods in same plot (not plotting all losses together due to difference in magnitudes accross losses)
+    fig, ax = plt.subplots()
+    for j, moo_method in enumerate(moo_method_list):
+        if skip_moco:
+            if moo_method=='MoCo':
+                continue
+        k = 0# start index (to or not to ommit init loss)
+        ax.errorbar(epoch_list[k:], descent_error_mean[moo_method][k:], descent_error_std[moo_method][k:], 
+                    fmt=moo_method_marker_list[j]+'-', capsize=5, 
+                    color=moo_method_color_list[j], markeredgecolor='k', markersize=5, label=moo_method_name_list[j])
+        ax.plot(epoch_list[k:], descent_error_mean[moo_method][k:], color=moo_method_color_list[j], 
+                markeredgecolor='k', markersize=15, linewidth=4)
+        ax.fill_between(epoch_list[k:], descent_error_mean[moo_method][k:] - descent_error_std[moo_method][k:], 
+                        descent_error_mean[moo_method][k:] + descent_error_std[moo_method][k:], 
+                        color=moo_method_color_list[j], alpha=0.25)
+
+    ax.legend(fontsize=18)
+    ax.set_xlabel(f'Epoch', fontsize=18)
+    ax.set_xticks(epoch_list[::4])
+    ax.set_xticklabels([str(int(i)) for i in epoch_list[::4]])
+    plt.xticks(fontsize=15)
+    plt.yticks(fontsize=15)
+    plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+    if skip_moco:
+        plt.savefig(f'./figures/descent_error_method_comp_no_moco.pdf', bbox_inches='tight')
+    else:
+        plt.savefig(f'./figures/descent_error_method_comp.pdf', bbox_inches='tight')
 
 # plot results for T ablation #TODO
 def T_ablation(plot_type='all'):
@@ -642,6 +735,10 @@ def T_ablation(plot_type='all'):
     train_loss = []
     test_loss = []
     error = []
+
+    hp_list = [10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 25000, 50000, 75000, 100000]
+    hp_label = r'$T$'
+    hp_type = 'T'
 
     # scrape the log files
     # for moo_method in moo_method_list:
@@ -702,18 +799,20 @@ def T_ablation(plot_type='all'):
     print()
 
     print(error.shape)
+    start_idx=3
 
-    pop_error_mean = error_mean[:, 0]
-    opt_error_mean = error_mean[:, 1]
-    gen_error_mean = error_mean[:, 2]
+    pop_error_mean = error_mean[:, 0][start_idx:]
+    opt_error_mean = error_mean[:, 1][start_idx:]
+    gen_error_mean = error_mean[:, 2][start_idx:]
 
-    pop_error_std = error_std[:, 0]
-    opt_error_std = error_std[:, 1]
-    gen_error_std = error_std[:, 2]
+    pop_error_std = error_std[:, 0][start_idx:]
+    opt_error_std = error_std[:, 1][start_idx:]
+    gen_error_std = error_std[:, 2][start_idx:]
 
-    hp_list = [10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000]
-    hp_label = r'$T$'
-    hp_type = 'T'
+    hp_list = hp_list[start_idx:]
+
+    print(len(hp_list), gen_error_mean.shape)
+
     # plot
     fig, ax = plt.subplots()
     hp_list = [float(hp) for hp in hp_list]
@@ -808,10 +907,10 @@ if __name__=='__main__':
     # gamma_ablation(plot_type='gen')
 
     # hp ablation (gamma, rho, lr)
-    # hp_ablation(plot_type='all-diff-scale', hp_type='lr')
+    # hp_ablation(plot_type='all-diff-scale', hp_type='gamma')
 
     # T ablation
-    T_ablation(plot_type='all-diff-scale')
+    # T_ablation(plot_type='all-diff-scale')
 
     # perf. metric calc.
     # loss_calc()
@@ -820,4 +919,7 @@ if __name__=='__main__':
     # loss_plots()
 
     # plot loss and error (pop, opt, and gen) curves
-    # loss_error_plots()
+    loss_error_plots()
+
+    # plot descent error curves
+    descent_error_plots()

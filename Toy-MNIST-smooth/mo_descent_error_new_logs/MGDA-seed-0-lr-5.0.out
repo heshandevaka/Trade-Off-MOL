@@ -1,0 +1,47 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=0.1, lr=5.0, moo_method='MGDA', num_epochs=1000, rho_moco=0.0, rho_modo=0.0, seed=0)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+==================================================
+LOG FORMAT: Epoch: EPOCH | Descent Error: DESC ERROR
+==================================================
+Epoch:      0 | Descent Error: 0.0
+Epoch:     50 | Descent Error: 0.0
+Epoch:    100 | Descent Error: 0.0
+Epoch:    150 | Descent Error: 0.0
+Epoch:    200 | Descent Error: 0.0
+Epoch:    250 | Descent Error: 0.0
+Epoch:    300 | Descent Error: 0.0
+Epoch:    350 | Descent Error: 0.0
+Epoch:    400 | Descent Error: 0.0
+Epoch:    450 | Descent Error: 0.0
+Epoch:    500 | Descent Error: 0.0
+Epoch:    550 | Descent Error: 0.0
+Epoch:    600 | Descent Error: 0.0
+Epoch:    650 | Descent Error: 0.0
+Epoch:    700 | Descent Error: 0.0
+Epoch:    750 | Descent Error: 0.0
+Epoch:    800 | Descent Error: 0.0
+Epoch:    850 | Descent Error: 0.0
+Epoch:    900 | Descent Error: 0.0
+Epoch:    950 | Descent Error: 0.0
+Epoch:  1,000 | Descent Error: 0.0
+
+====================================================================================================
+PERF FORMAT: DATASET | Acuracy: ACC | Loss: LOSS1 LOSS2 LOSS3 | PS: PS
+====================================================================================================
+Train | Acuracy:  90.75% | Loss: 0.38433 0.01408 0.00197 | PS: 0.0008 
+Val   | Acuracy:  90.48% | Loss: 0.39571 0.01451 0.00202 | PS: 0.00098 
+Test  | Acuracy:  91.21% | Loss: 0.36406 0.01336 0.00188 | PS: 0.00093 
+----------------------------------------------------------------------------------------------------
+Optimization error  : 0.0008
+Population error    : 0.00093
+Generalization error: 0.00013

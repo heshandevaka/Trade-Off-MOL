@@ -327,6 +327,9 @@ kwargs = {'EW':{}, 'MGDA':{}, 'MoCo':moco_kwargs, 'MoDo':modo_kwargs}
 # optimiser (sgd)
 optimizer = optim.SGD(model.parameters(), lr=lr)
 
+# T ablation list
+T_list = [10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 25000, 50000, 75000, 100000]
+
 # print log format
 print("\n"+"="*50)
 print(f'LOG FORMAT: Epoch: EPOCH | Descent Error: DESC ERROR')
@@ -358,12 +361,14 @@ for i in range(num_epochs):
     # calc multi-grad according to moo method
     lambdt, multi_grad = multi_grad_fn[moo_method](grad_list, **kwargs)
     # calc and report loss values every 100 epochs
-    if i%50 == 0:
+    if i in T_list:
         # get descent error
         descent_error = get_descent_errror(model, optimizer, train_eval_dataloader, loss_dict, num_param, num_param_layer, softmax, onehot_enc, lambdt)
         count += 1
-        descent_error_sum += descent_error   
-        print(f"Epoch: {i: 6,} | Descent Error: {round(descent_error_sum / count, 10)}")
+        descent_error_sum += descent_error         
+        print(f"Epoch: {i: 8,} | Descent Error: {round(descent_error_sum / count, 10)}")
+    elif i%1000==0:
+        print(f"Epoch: {i: 8,}")
 
     # update model grad with the multi-grad
     set_grads(model, multi_grad, num_param_layer)
@@ -373,7 +378,7 @@ for i in range(num_epochs):
 # get final loss and error values
 descent_error = get_descent_errror(model, optimizer, train_eval_dataloader, loss_dict, num_param, num_param_layer, softmax, onehot_enc, lambdt)
 count += 1
-descent_error_sum += descent_error      
+descent_error_sum += descent_error     
 print(f"Epoch: {i+1: 6,} | Descent Error: {round(descent_error_sum / count, 10)}")
     
 

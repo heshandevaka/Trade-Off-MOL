@@ -922,4 +922,4 @@ if __name__=='__main__':
     loss_error_plots()
 
     # plot descent error curves
-    descent_error_plots()
+    # descent_error_plots()

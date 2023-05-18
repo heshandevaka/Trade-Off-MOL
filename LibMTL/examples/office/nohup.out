@@ -72,3 +72,33 @@ python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path offic
 python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MGDA --weight_decay 1e-7 --lr 1e-4  > hp_grid_logs/MGDA-seed-0-lr-1e-4-weight_decay-1e-7.out
 python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MGDA --weight_decay 1e-6 --lr 1e-4  > hp_grid_logs/MGDA-seed-0-lr-1e-4-weight_decay-1e-6.out
 python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-31 --weighting MGDA --weight_decay 1e-5 --lr 1e-4  > hp_grid_logs/MGDA-seed-0-lr-1e-4-weight_decay-1e-5.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-3  --weight_decay 1e-6 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-3-weight_decay-1e-6-task_idx-0-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 1 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-3  --weight_decay 1e-7 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-3-weight_decay-1e-7-task_idx-0-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-3  --weight_decay 1e-6 --task_idx 1 > hp_grid_logs_home/ITL-seed-0-lr-1e-3-weight_decay-1e-6-task_idx-1-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 1 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-3  --weight_decay 1e-7 --task_idx 1 > hp_grid_logs_home/ITL-seed-0-lr-1e-3-weight_decay-1e-7-task_idx-1-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 1 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-2  --weight_decay 1e-7 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-2-weight_decay-1e-7-task_idx-0-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-2  --weight_decay 1e-6 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-2-weight_decay-1e-6-task_idx-0-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 1 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-2  --weight_decay 1e-7 --task_idx 1 > hp_grid_logs_home/ITL-seed-0-lr-1e-2-weight_decay-1e-7-task_idx-1-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-2  --weight_decay 1e-6 --task_idx 1 > hp_grid_logs_home/ITL-seed-0-lr-1e-2-weight_decay-1e-6-task_idx-1-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-4  --weight_decay 1e-4 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-4-weight_decay-1e-4-task_idx-0-office-home.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/train_office.py", line 1, in <module>
+    import torch, argparse
+ModuleNotFoundError: No module named 'torch'
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-4  --weight_decay 1e-4 --task_idx 1 > hp_grid_logs_home/ITL-seed-0-lr-1e-4-weight_decay-1e-4-task_idx-1-office-home.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/train_office.py", line 1, in <module>
+    import torch, argparse
+ModuleNotFoundError: No module named 'torch'
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-4  --weight_decay 1e-4 --task_idx 2 > hp_grid_logs_home/ITL-seed-0-lr-1e-4-weight_decay-1e-4-task_idx-2-office-home.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/train_office.py", line 1, in <module>
+    import torch, argparse
+ModuleNotFoundError: No module named 'torch'
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-4  --weight_decay 1e-4 --task_idx 3 > hp_grid_logs_home/ITL-seed-0-lr-1e-4-weight_decay-1e-4-task_idx-3-office-home.out
+Traceback (most recent call last):
+  File "/home/hdf/hdf/MoDo/LibMTL/examples/office/train_office.py", line 1, in <module>
+    import torch, argparse
+ModuleNotFoundError: No module named 'torch'
+python -u train_office.py --multi_input --seed 0 --gpu_id 0 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-4  --weight_decay 1e-4 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-4-weight_decay-1e-4-task_idx-0-office-home.out
+python -u train_office.py --multi_input --seed 0 --gpu_id 1 --dataset_path office-home --dataset office-home --weighting ITL  --lr 1e-4  --weight_decay 1e-3 --task_idx 0 > hp_grid_logs_home/ITL-seed-0-lr-1e-4-weight_decay-1e-3-task_idx-0-office-home.out

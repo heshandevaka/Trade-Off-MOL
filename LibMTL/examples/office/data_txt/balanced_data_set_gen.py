@@ -112,5 +112,5 @@ def balance_data(dataset, data_domains, data_limits):
 
 
 
-get_data_stats(stats='min-max-classes')
+get_data_stats(stats='all')
 

@@ -4,6 +4,7 @@ import  os
 import copy
 
 import matplotlib.lines as mlines
+from scipy.io import savemat
 
 # ------------------------------------------------------------legacy code-----------------------------------------------------------------------------------------
 
@@ -159,10 +160,8 @@ def rho_ablation(plot_type='gen'):
     ax.set_xlabel(r'$\rho$')
     plt.savefig(f'./figures/rho_{plot_type}_err_comp.pdf', bbox_inches='tight')
 
-    # ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# ablation over different hp for MoDo
-def hp_ablation(plot_type='gen', hp_type='gamma'):
+    # ablation over different hp for MoDo
+def hp_ablation_old(plot_type='gen', hp_type='gamma'):
     # folder containing data logs for ablation
     folder=f'./modo_{hp_type}_ablation_new_logs/'
     file_list = os.listdir(folder)
@@ -288,6 +287,235 @@ def hp_ablation(plot_type='gen', hp_type='gamma'):
         ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
         if hp_type=='gamma':
             plt.legend(loc='center right', handles=[opt_handle, pop_handle, gen_handle], fontsize=18)
+        # ax.set_ylabel('Error', fontsize=18)
+    # ax.set_xlabel(hp_label, fontsize=18)
+    # if plot_type=='gen' and hp_type=='gamma':
+    #     ax.set_ylim([0.0005, 0.004])
+    # plt.xticks(fontsize=15)
+    # plt.yticks(fontsize=15)
+    # plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+    plt.savefig(f'./figures/{hp_type}_{plot_type}_err_comp_new.pdf', bbox_inches='tight')
+
+    # ------------------------------------------------------------------------------------------------------------------------------------------------------------
+# from CAGrad
+def smooth(x, n=4):
+    l = len(x)
+    y = []
+    for i in range(l):
+        ii = max(0, i-n)
+        jj = min(i+n, l-1)
+        v = np.array(x[ii:jj]).astype(np.float64)
+        if i < 1:
+            y.append(x[i])
+        else:
+            y.append(v.mean())
+    return np.array(y)
+
+# ablation over different hp for MoDo
+def hp_ablation(plot_type='gen', hp_type='gamma'):
+
+    # hp set used for ablation
+    if hp_type=='gamma':
+        hp_list = ['0.0075', '0.01', '0.025', '0.05', '0.075', '0.1', '0.25', '0.5', '0.75', '1.', '1.25']
+        hp_label = r'$\gamma$'
+    if hp_type=='lr':
+        hp_list = ['0.0075', '0.01', '0.025', '0.05', '0.075', '0.1', '0.25', '0.5', '0.75', '1.', '1.25']
+        hp_label = r'$\alpha$'
+
+    
+    # folder containing data logs for ablation
+    folder=f'./modo_{hp_type}_ablation_new_logs/'
+    file_list = os.listdir(folder)
+
+    print(file_list)
+
+    # init lists to collect data from different seeds
+    opt_error = {hp:[] for hp in hp_list}
+    pop_error = {hp:[] for hp in hp_list}
+    gen_error = {hp:[] for hp in hp_list}
+
+    # scrape the log files
+    for hp in hp_list:
+        for file in file_list:
+            if f'{hp_type}-{hp}' in file:
+                foo = open(folder+file)
+                lines = foo.read().split('\n')
+                print(f'\n{file}', hp)
+                for line in lines:
+                    # scrape pop. error data from log file
+                    if "Population error" in line:
+                        pop_error[hp].append(float(line.strip().split(': ')[1]))
+                    # scrape opt. error data from log file
+                    if "Optimization error" in line:
+                        opt_error[hp].append(float(line.strip().split(': ')[1]))
+                    # scrape gen. error data from log file (absolute value)
+                    if "Generalization error" in line:
+                        gen_error[hp].append(abs(float(line.strip().split(': ')[1])))
+
+    n_smooth=4 # param to smooth out the descrete curve, to show trend
+    # calc mean and std deviation for plotting (without normlization)
+    opt_error_mean = smooth(np.array([np.mean(opt_error[hp]) for hp in hp_list]), n=n_smooth)
+    opt_error_std = smooth(np.array([np.std(opt_error[hp]) for hp in hp_list]), n=n_smooth)
+    gen_error_mean = smooth(np.array([np.mean(gen_error[hp]) for hp in hp_list]), n=n_smooth)
+    gen_error_std = smooth(np.array([np.std(gen_error[hp]) for hp in hp_list]), n=n_smooth)
+    pop_error_mean = smooth(np.array([np.mean(pop_error[hp]) for hp in hp_list]), n=n_smooth)
+    pop_error_std = smooth(np.array([np.std(pop_error[hp]) for hp in hp_list]), n=n_smooth)
+
+    print(opt_error_mean)
+    print(opt_error_std)
+
+
+    # folder containing data logs for ablation
+    folder=f'./modo_{hp_type}_ablation_descent_logs/'
+    file_list = os.listdir(folder)
+
+    print(file_list)
+
+    # init lists to collect data from different seeds
+    descent_error = {hp:[] for hp in hp_list}
+
+    # scrape the log files
+    for hp in hp_list:
+        for file in file_list:
+            if f'{hp_type}-{hp}' in file:
+                foo = open(folder+file)
+                lines = foo.read().split('\n')
+                print(f'\n{file}', hp)
+                # to caclualte iteration Eca from moving avaerage recorded
+                count=0
+                for line in lines:
+                    # scrape final descent error data from log file
+                    if ("Epoch" in line) and ("FORMAT" not in line):
+                        count += 1
+                    if "Epoch:    950" in line:
+                        temp = float(line.strip().split(': ')[2]) * count
+                    if "Epoch:  1,000" in line:
+                        print(line)
+                        descent_error[hp].append((float(line.strip().split(': ')[2]) * count - temp)**2)
+
+    descent_error_mean = smooth(np.array([np.mean(descent_error[hp]) for hp in hp_list]), n=n_smooth)
+    descent_error_std = smooth(np.array([np.std(descent_error[hp]) for hp in hp_list]), n=n_smooth)
+
+    # save for plotting
+    mat_dict = {f"{hp_type}_list":np.array(hp_list), 
+                f"opt_error_mean_{hp_type}":opt_error_mean,
+                f"opt_error_std_{hp_type}":opt_error_std,
+                f"gen_error_mean_{hp_type}":gen_error_mean,
+                f"gen_error_std_{hp_type}":gen_error_std,
+                f"pop_error_mean_{hp_type}":pop_error_mean,
+                f"pop_error_std_{hp_type}":pop_error_std,
+                f"descent_error_mean_{hp_type}":descent_error_mean,
+                f"descent_error_std_{hp_type}":descent_error_std,
+    }
+    savemat(f"./matfiles/{hp_type}_mnist_ablation.mat", mat_dict)
+
+    # plot
+    fig, ax = plt.subplots()
+    hp_list = [float(hp) for hp in hp_list]
+
+    ax.set_xscale("log")
+    opt_color = np.array([84,172,108])/255 # green
+    pop_color = np.array([70,70,70])/255 # grey
+    gen_color = np.array([196,78,82])/255 # red
+    descent_color = np.array([204,185,116])/255 # yellow
+    # ax.set_yscale("log") # not useful since all errors are in similar order
+    if plot_type=='pop_opt':
+        std_scale = 0.5
+        ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)
+        ax.set_ylabel('Error', fontsize=18)
+        ax.set_xlabel(hp_label, fontsize=18)
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.legend(fontsize=18)
+    if plot_type=='gen':
+        std_scale = 0.5
+        ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')
+        ax.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax.set_xlabel(hp_label, fontsize=18)
+        # if hp_type=='gamma':
+        #     ax.set_ylim([0.0005, 0.004])
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.legend(fontsize=18)
+        # ax.set_ylabel('Absolute generalization error', fontsize=15)
+    if plot_type=='all':
+        std_scale = 1.0
+        ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')  
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)   
+        ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax.errorbar(hp_list, descent_error_mean, std_scale*descent_error_std, fmt='o-', capsize=5,
+                     color=descent_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$\mathcal{E}_{ca}$')   
+        ax.fill_between(hp_list, descent_error_mean - std_scale*descent_error_std, descent_error_mean + std_scale*descent_error_std, color=descent_color, alpha=0.5)
+        ax.set_ylabel('Error', fontsize=18)
+        ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        if hp_type=='gamma':
+            ax.legend(fontsize=18)
+    # use left and right sides to plot opt-pop and gen in different scales
+    if plot_type=='all-diff-scale':
+        std_scale = 0.5
+        opt_handle = ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        pop_handle = ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')  
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)  
+        ax2 = ax.twinx() # instantiate a second axes that shares the same x-axis
+        gen_handle = ax2.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o-', capsize=5,
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax2.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax.tick_params(axis='both', which='major', labelsize=15)
+        ax2.tick_params(axis='y', which='major', labelsize=15, labelcolor=gen_color)
+        ax2.set_ylabel('Generalization', fontsize=18)
+        ax2.yaxis.label.set_color(gen_color)
+        ax.set_ylabel('Population/Optimization', fontsize=18)
+        ax2.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
+        if hp_type=='gamma':
+            plt.legend(loc='center right', handles=[opt_handle, pop_handle, gen_handle], fontsize=18)
+    # use left and right sides to plot opt-pop-gen and descent in different scales
+    if plot_type=='all-2':
+        std_scale = 0.5
+        opt_handle = ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        pop_handle = ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')  
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)  
+        gen_handle = ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o--', capsize=5,
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax2 = ax.twinx() # instantiate a second axes that shares the same x-axis
+        descent_handle = ax2.errorbar(hp_list, descent_error_mean, std_scale*descent_error_std, fmt='o-', capsize=5,
+                     color=descent_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$\mathcal{E}_{ca}$')   
+        ax2.fill_between(hp_list, descent_error_mean - std_scale*descent_error_std, descent_error_mean + std_scale*descent_error_std, color=descent_color, alpha=0.5)
+        ax.tick_params(axis='both', which='major', labelsize=15)
+        ax2.tick_params(axis='y', which='major', labelsize=15, labelcolor=descent_color)
+        ax2.set_ylabel('Descent', fontsize=18)
+        ax2.yaxis.label.set_color(descent_color)
+        ax.set_ylabel('Pop/Opt/Gen', fontsize=18)
+        ax2.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
+        if hp_type=='gamma':
+            plt.legend(loc='center right', handles=[opt_handle, pop_handle, gen_handle, descent_handle], fontsize=18)
         # ax.set_ylabel('Error', fontsize=18)
     # ax.set_xlabel(hp_label, fontsize=18)
     # if plot_type=='gen' and hp_type=='gamma':
@@ -723,10 +951,9 @@ def descent_error_plots():
     else:
         plt.savefig(f'./figures/descent_error_method_comp.pdf', bbox_inches='tight')
 
-# plot results for T ablation #TODO
 def T_ablation(plot_type='all'):
     # folder containing data logs for ablation
-    folder='./modo_T_ablation_logs/'
+    folder='./modo_T_ablation_new_logs/'
     file_list = os.listdir(folder)
 
     print(file_list)
@@ -798,20 +1025,73 @@ def T_ablation(plot_type='all'):
     print(error_std[-1]*1000)
     print()
 
-    print(error.shape)
+
+    # folder containing data logs for ablation
+    folder=f'./modo_T_ablation_descent_logs/'
+    file_list = os.listdir(folder)
+
+    print(file_list)
+
+    # init lists to collect data from different seeds
+    descent_error = []
+
+    # scrape the log files
+    for file in file_list:
+        foo = open(folder+file)
+        lines = foo.read().split('\n')
+        print(f'\n{file}')
+        # to caclualte iteration Eca from moving avaerage recorded
+        count=0
+        descent_error_epoch_list = []
+        cum_sum = 0
+        for line in lines:
+            # scrape final descent error data from log file
+            if ("Epoch" in line) and ("Descent Error:" in line) and ("EPOCH" not in line):
+                
+                count += 1
+                descent_error_ = float(line.strip().split(': ')[2]) * count - cum_sum
+                descent_error_epoch_list.append(descent_error_**2)
+                print(cum_sum)
+                cum_sum = float(line.strip().split(': ')[2]) * count
+                print(line, descent_error_)
+        descent_error.append(descent_error_epoch_list)
+    descent_error = np.array(descent_error) 
+
+    descent_error_mean = np.mean(descent_error, axis=0)
+    descent_error_std = np.std(descent_error, axis=0)       
+
+    print('descent error', descent_error.shape)
     start_idx=3
+    n_smooth=4
+    pop_error_mean = smooth(error_mean[:, 0][start_idx:], n=n_smooth)
+    opt_error_mean = smooth(error_mean[:, 1][start_idx:], n=n_smooth)
+    gen_error_mean = smooth(error_mean[:, 2][start_idx:], n=n_smooth)
+    descent_error_mean = smooth(descent_error_mean[start_idx:], n=n_smooth)
 
-    pop_error_mean = error_mean[:, 0][start_idx:]
-    opt_error_mean = error_mean[:, 1][start_idx:]
-    gen_error_mean = error_mean[:, 2][start_idx:]
+    # save arrays for plotting 
 
-    pop_error_std = error_std[:, 0][start_idx:]
-    opt_error_std = error_std[:, 1][start_idx:]
-    gen_error_std = error_std[:, 2][start_idx:]
+
+    pop_error_std = smooth(error_std[:, 0][start_idx:], n=n_smooth)
+    opt_error_std = smooth(error_std[:, 1][start_idx:], n=n_smooth)
+    gen_error_std = smooth(error_std[:, 2][start_idx:], n=n_smooth)
+    descent_error_std = smooth(descent_error_std[start_idx:], n=n_smooth)
 
     hp_list = hp_list[start_idx:]
 
     print(len(hp_list), gen_error_mean.shape)
+
+    # save for plotting
+    mat_dict = {"T_list":np.array(hp_list), 
+                "opt_error_mean_T":opt_error_mean,
+                "opt_error_std_T":opt_error_std,
+                "gen_error_mean_T":gen_error_mean,
+                "gen_error_std_T":gen_error_std,
+                "pop_error_mean_T":pop_error_mean,
+                "pop_error_std_T":pop_error_std,
+                "descent_error_mean_T":descent_error_mean,
+                "descent_error_std_T":descent_error_std,
+    }
+    savemat(f"./matfiles/T_mnist_ablation.mat", mat_dict)
 
     # plot
     fig, ax = plt.subplots()
@@ -821,6 +1101,7 @@ def T_ablation(plot_type='all'):
     opt_color = np.array([84,172,108])/255 # green
     pop_color = np.array([70,70,70])/255 # grey
     gen_color = np.array([196,78,82])/255 # red
+    descent_color = np.array([204,185,116])/255 # yellow
     # ax.set_yscale("log") # not useful since all errors are in similar order
     if plot_type=='pop_opt':
         std_scale = 0.5
@@ -890,6 +1171,32 @@ def T_ablation(plot_type='all'):
         ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
         if hp_type=='lr':
             plt.legend(handles=[opt_handle, pop_handle, gen_handle], fontsize=18)
+    if plot_type=='all-2':
+        std_scale = 0.5
+        opt_handle = ax.errorbar(hp_list, opt_error_mean, std_scale*opt_error_std, fmt='o-', capsize=5, 
+                    color=opt_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{opt}$')
+        ax.fill_between(hp_list, opt_error_mean - std_scale*opt_error_std, opt_error_mean + std_scale*opt_error_std, color=opt_color, alpha=0.5)
+        pop_handle = ax.errorbar(hp_list, pop_error_mean, std_scale*pop_error_std, fmt='o--', capsize=5, 
+                    color=pop_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$R_{pop}$')  
+        ax.fill_between(hp_list, pop_error_mean - std_scale*pop_error_std, pop_error_mean + std_scale*pop_error_std, color=pop_color, alpha=0.5)  
+        gen_handle = ax.errorbar(hp_list, gen_error_mean, std_scale*gen_error_std, fmt='o--', capsize=5,
+                     color=gen_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$|R_{gen}|$')   
+        ax.fill_between(hp_list, gen_error_mean - std_scale*gen_error_std, gen_error_mean + std_scale*gen_error_std, color=gen_color, alpha=0.5)
+        ax2 = ax.twinx() # instantiate a second axes that shares the same x-axis
+        descent_handle = ax2.errorbar(hp_list, descent_error_mean, std_scale*descent_error_std, fmt='o-', capsize=5,
+                     color=descent_color,markeredgecolor='k', markersize=5, linewidth=4, elinewidth=1, label=r'$\mathcal{E}_{ca}$')   
+        ax2.fill_between(hp_list, descent_error_mean - std_scale*descent_error_std, descent_error_mean + std_scale*descent_error_std, color=descent_color, alpha=0.5)
+        ax.tick_params(axis='both', which='major', labelsize=15)
+        ax2.tick_params(axis='y', which='major', labelsize=15, labelcolor=descent_color)
+        ax2.set_ylabel('Descent', fontsize=18)
+        ax2.yaxis.label.set_color(descent_color)
+        ax.set_ylabel('Pop/Opt/Gen', fontsize=18)
+        ax2.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+        ax.set_xlabel(hp_label+' (log scale)', fontsize=18)
+        
+        if hp_type=='gamma':
+            plt.legend(loc='center right', handles=[opt_handle, pop_handle, gen_handle, descent_handle], fontsize=18)
         # ax.set_ylabel('Error', fontsize=18)
     # ax.set_xlabel(hp_label, fontsize=18)
     # if plot_type=='gen' and hp_type=='gamma':
@@ -907,10 +1214,10 @@ if __name__=='__main__':
     # gamma_ablation(plot_type='gen')
 
     # hp ablation (gamma, rho, lr)
-    # hp_ablation(plot_type='all-diff-scale', hp_type='gamma')
+    hp_ablation(plot_type='all-2', hp_type='gamma')
 
     # T ablation
-    # T_ablation(plot_type='all-diff-scale')
+    # T_ablation(plot_type='all-2')
 
     # perf. metric calc.
     # loss_calc()
@@ -919,7 +1226,7 @@ if __name__=='__main__':
     # loss_plots()
 
     # plot loss and error (pop, opt, and gen) curves
-    loss_error_plots()
+    # loss_error_plots()
 
     # plot descent error curves
     # descent_error_plots()

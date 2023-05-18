@@ -1,0 +1,47 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=0.01, lr=0.075, moo_method='MoDo', num_epochs=1000, rho_moco=0.0, rho_modo=0.0, seed=8)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+==================================================
+LOG FORMAT: Epoch: EPOCH | Descent Error: DESC ERROR
+==================================================
+Epoch:      0 | Descent Error: 0.5186539292
+Epoch:     50 | Descent Error: 0.3525450453
+Epoch:    100 | Descent Error: 0.2718083337
+Epoch:    150 | Descent Error: 0.2228226364
+Epoch:    200 | Descent Error: 0.1894616403
+Epoch:    250 | Descent Error: 0.1668906262
+Epoch:    300 | Descent Error: 0.1489786559
+Epoch:    350 | Descent Error: 0.1359027321
+Epoch:    400 | Descent Error: 0.1262130431
+Epoch:    450 | Descent Error: 0.1177745048
+Epoch:    500 | Descent Error: 0.1116392386
+Epoch:    550 | Descent Error: 0.1054380185
+Epoch:    600 | Descent Error: 0.0991996667
+Epoch:    650 | Descent Error: 0.0946058972
+Epoch:    700 | Descent Error: 0.0900496025
+Epoch:    750 | Descent Error: 0.0857124922
+Epoch:    800 | Descent Error: 0.0823477652
+Epoch:    850 | Descent Error: 0.079813572
+Epoch:    900 | Descent Error: 0.0766719058
+Epoch:    950 | Descent Error: 0.0747446686
+Epoch:  1,000 | Descent Error: 0.07252
+
+====================================================================================================
+PERF FORMAT: DATASET | Acuracy: ACC | Loss: LOSS1 LOSS2 LOSS3 | PS: PS
+====================================================================================================
+Train | Acuracy:  90.01% | Loss: 0.36205 0.01573 0.00278 | PS: 0.00182 
+Val   | Acuracy:  89.53% | Loss: 0.37935 0.01626 0.00284 | PS: 0.00188 
+Test  | Acuracy:  90.35% | Loss: 0.34912 0.01511 0.00269 | PS: 0.00235 
+----------------------------------------------------------------------------------------------------
+Optimization error  : 0.00182
+Population error    : 0.00235
+Generalization error: 0.00053

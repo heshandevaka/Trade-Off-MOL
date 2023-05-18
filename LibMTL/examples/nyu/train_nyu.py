@@ -18,7 +18,7 @@ def parse_args(parser):
     parser.add_argument('--train_mode', default='trainval', type=str, help='trainval, train')
     parser.add_argument('--train_bs', default=8, type=int, help='batch size for training')
     parser.add_argument('--test_bs', default=8, type=int, help='batch size for test')
-    parser.add_argument('--dataset_path', default='/', type=str, help='dataset path')
+    parser.add_argument('--dataset_path', default='./nyu-v2/', type=str, help='dataset path')
     return parser.parse_args()
     
 def main(params):

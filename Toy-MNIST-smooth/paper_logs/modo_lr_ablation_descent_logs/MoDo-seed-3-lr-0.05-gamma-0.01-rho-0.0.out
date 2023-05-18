@@ -1,0 +1,47 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=0.01, lr=0.05, moo_method='MoDo', num_epochs=1000, rho_moco=0.0, rho_modo=0.0, seed=3)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+==================================================
+LOG FORMAT: Epoch: EPOCH | Descent Error: DESC ERROR
+==================================================
+Epoch:      0 | Descent Error: 0.5322921276
+Epoch:     50 | Descent Error: 0.369679749
+Epoch:    100 | Descent Error: 0.286589173
+Epoch:    150 | Descent Error: 0.2372092642
+Epoch:    200 | Descent Error: 0.2043748751
+Epoch:    250 | Descent Error: 0.179967545
+Epoch:    300 | Descent Error: 0.1607170158
+Epoch:    350 | Descent Error: 0.1456345608
+Epoch:    400 | Descent Error: 0.1333047565
+Epoch:    450 | Descent Error: 0.1233659152
+Epoch:    500 | Descent Error: 0.1146445992
+Epoch:    550 | Descent Error: 0.1075578768
+Epoch:    600 | Descent Error: 0.1009974904
+Epoch:    650 | Descent Error: 0.0952908861
+Epoch:    700 | Descent Error: 0.0903831293
+Epoch:    750 | Descent Error: 0.0858810954
+Epoch:    800 | Descent Error: 0.0818813362
+Epoch:    850 | Descent Error: 0.0785373385
+Epoch:    900 | Descent Error: 0.0753910274
+Epoch:    950 | Descent Error: 0.0724058463
+Epoch:  1,000 | Descent Error: 0.06981
+
+====================================================================================================
+PERF FORMAT: DATASET | Acuracy: ACC | Loss: LOSS1 LOSS2 LOSS3 | PS: PS
+====================================================================================================
+Train | Acuracy:  88.76% | Loss: 0.42986 0.01855 0.00345 | PS: 0.00198 
+Val   | Acuracy:  88.22% | Loss: 0.43933 0.01905 0.00351 | PS: 0.00212 
+Test  | Acuracy:  89.26% | Loss: 0.41072 0.01765 0.00331 | PS: 0.00232 
+----------------------------------------------------------------------------------------------------
+Optimization error  : 0.00198
+Population error    : 0.00232
+Generalization error: 0.00033

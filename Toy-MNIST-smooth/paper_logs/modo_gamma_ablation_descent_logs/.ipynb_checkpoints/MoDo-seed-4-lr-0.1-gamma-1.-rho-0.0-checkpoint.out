@@ -1,0 +1,22 @@
+Namespace(batch_size=64, beta_moco=0.1, gamma_moco=0.1, gamma_modo=1.0, lr=0.1, moo_method='MoDo', num_epochs=1000, rho_moco=0.0, rho_modo=0.0, seed=4)
+
+==================================================
+Model parameter count per layer
+==================================================
+fc1.weight 	: 401408
+fc1.bias 	: 512
+fc2.weight 	: 5120
+fc2.bias 	: 10
+Total number of parametrs : 407050
+--------------------------------------------------
+
+==================================================
+LOG FORMAT: Epoch: EPOCH | Descent Error: DESC ERROR
+==================================================
+Epoch:      0 | Descent Error: 0.0145321609
+Epoch:     50 | Descent Error: 0.0149084744
+Epoch:    100 | Descent Error: 0.0152614039
+Epoch:    150 | Descent Error: 0.0153607961
+Epoch:    200 | Descent Error: 0.0153829969
+Epoch:    250 | Descent Error: 0.0153362015
+Epoch:    300 | Descent Error: 0.0152085137

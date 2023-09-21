@@ -125,8 +125,8 @@ class MoDo(AbsWeighting):
         return grads
     
     def backward(self, losses, **kwargs):
-        # NOTE: losses for MoDo is a list of two samples
-        # losses1, losses2 = losses
+        # NOTE: losses for MoDo is a list of two (three) samples
+        # losses1, losses2 (,loss3) = losses
 
         # convert losses list to a tensor
         losses = torch.stack(losses)
@@ -135,11 +135,18 @@ class MoDo(AbsWeighting):
         gamma_modo = kwargs['gamma_modo']
         rho_modo = kwargs['rho_modo']
         modo_gn = kwargs['modo_gn']
+        three_grad = kwargs['three_grad']
         
         # get gradients from losses
         grads = []
-        for i in range(2):
+        for i in range(3 if three_grad else 2):
             grads.append(self._get_grads(losses[i], mode='backward'))
+        # average the gradient in decorders if only 3rd gradient is used to update shared part
+        if three_grad:
+            for task in list(self.decoders.keys()):
+                for p_idx, p in enumerate(self.decoders[task].parameters()):
+                    p.grad.data = p.grad.data/3
+            
         # convert grads list to a tensor
         grads = torch.stack(grads)
 
@@ -162,6 +169,9 @@ class MoDo(AbsWeighting):
         if self.rep_grad: # assuming False (for now)
             self._backward_new_grads(self.lambd, per_grads=per_grads)
         else:
-            self._backward_new_grads(self.lambd, grads=torch.sum(grads, dim=0))
+            if three_grad:
+                self._backward_new_grads(self.lambd, grads=grads[2])
+            else:
+                self._backward_new_grads(self.lambd, grads=torch.sum(grads, dim=0))
 
         return self.lambd.detach().cpu().numpy()

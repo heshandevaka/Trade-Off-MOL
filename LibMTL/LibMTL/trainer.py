@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
+import copy
 
 from LibMTL._record import _PerformanceMeter
 from LibMTL.utils import count_parameters
@@ -93,10 +94,12 @@ class Trainer(nn.Module):
         self._prepare_optimizer(optim_param, scheduler_param)
 
         # set base results to compute average performance gap
-        if list(self.task_dict.keys()) == ['amazon', 'dslr', 'webcam']:
-            self.base_result = {'amazon':0.875, 'dslr':0.9888, 'webcam':0.9732} #manually obtained
-        elif list(self.task_dict.keys()) == ['Art', 'Clipart', 'Product', 'Real_World']:
+        if list(self.task_dict.keys()) == ['amazon', 'dslr', 'webcam']: # office-31
+            self.base_result = {'amazon':0.875, 'dslr':0.9888, 'webcam':0.9732} 
+        elif list(self.task_dict.keys()) == ['Art', 'Clipart', 'Product', 'Real_World']: # office-home
             self.base_result = {'Art':1., 'Clipart':1., 'Product':1., 'Real_World':1.} #TODO: calc these values
+        elif list(self.task_dict.keys()) == ['segmentation', 'depth', 'normal']: # nyu-v2 
+            self.base_result = {'segmentation':np.array([0.5394, 0.7567]), 'depth':np.array([0.3949, 0.1634]), 'normal':np.array([22.1193, 15.4887,  0.3835,  0.643,   0.747])} 
         else:
             self.base_result = None
         
@@ -215,18 +218,38 @@ class Trainer(nn.Module):
             self.meter.record_time('begin')
             for batch_index in range(train_batch):
                 if not self.multi_input:
-                    train_inputs, train_gts = self._process_data(train_loader)
-                    train_preds = self.model(train_inputs)
-                    train_preds = self.process_preds(train_preds)
-                    train_losses = self._compute_loss(train_preds, train_gts)
-                    self.meter.update(train_preds, train_gts)
+                    # double sample if MoDo
+                    if self.kwargs['weight_args']['weighting'] == 'MoDo':
+                        # init 2 (3) sample collector (different from train_losses for other methods)
+                        train_losses = []
+                        # collect two (three) independant samples
+                        for i in range(3 if self.kwargs['weight_args']['three_grad'] else 2):
+                            train_inputs, train_gts = self._process_data(train_loader)
+                            train_preds = self.model(train_inputs)
+                            train_preds = self.process_preds(train_preds)
+                            train_losses_ = self._compute_loss(train_preds, train_gts)
+                            train_losses.append(train_losses_.clone())
+                            # if i==0:
+                            #     train_preds = train_preds_
+                            #     train_gts = train_gts_
+                            # if i==1:
+                            #     for key in list(train_preds.keys()):
+                            #         train_preds[key] = torch.cat((train_preds[key], train_preds_[key]), dim=0)
+                            #         train_gts[key] = torch.cat((train_gts[key], train_gts_[key]), dim=0)
+                        self.meter.update(train_preds, train_gts)
+                    else:
+                        train_inputs, train_gts = self._process_data(train_loader)
+                        train_preds = self.model(train_inputs)
+                        train_preds = self.process_preds(train_preds)
+                        train_losses = self._compute_loss(train_preds, train_gts)
+                        self.meter.update(train_preds, train_gts)
                 else:
                     # double sample if MoDo
                     if self.kwargs['weight_args']['weighting'] == 'MoDo':
-                        # init 2 sample collector (different from train_losses for other methods)
+                        # init 2 (3) sample collector (different from train_losses for other methods)
                         train_losses = []
-                        # collect two independant samples
-                        for i in range(2):
+                        # collect two (three) independant samples
+                        for i in range(3 if self.kwargs['weight_args']['three_grad'] else 2):
                             # dummy train_losses_ to be collected in train_losses
                             train_losses_ = torch.zeros(self.task_num).to(self.device)
                             for tn, task in enumerate(self.task_name):

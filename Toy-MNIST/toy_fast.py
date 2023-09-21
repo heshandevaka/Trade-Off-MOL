@@ -143,7 +143,7 @@ def get_grads(model, optimizer, pred, label, loss_dict, num_param, num_param_lay
     num_loss = len(loss_dict) 
     # compute the loss w.r.t each loss function
     for k, loss_fn in enumerate(loss_dict):
-        if loss_fn =='l1':
+        if loss_fn =='mse' or loss_fn =='huber':
             loss = loss_dict[loss_fn](softmax(pred), onehot_enc[label])
         else:
             loss = loss_dict[loss_fn](pred, label)
@@ -249,9 +249,15 @@ cross_entropy_loss = nn.CrossEntropyLoss()
 l1_loss = nn.L1Loss()
 # hinge loss
 hinge_loss = torch.nn.MultiMarginLoss()
+# hinge loss
+hinge_loss = torch.nn.MultiMarginLoss()
+# MSE loss
+mse_loss = torch.nn.MSELoss()
+# Huber loss
+huber_loss = torch.nn.HuberLoss(delta=0.1) # to make sure this is deifferent from mse
 
 # dictionary of losses
-loss_dict = {'cel':cross_entropy_loss, 'l1':l1_loss, 'hinge':hinge_loss}
+loss_dict = {'cel':cross_entropy_loss, 'mse':mse_loss, 'huber':huber_loss}
 # number of tasks
 num_tasks = len(loss_dict)
 

@@ -1,0 +1,26 @@
+========================================
+General Configuration:
+	Wighting: MoDo
+	Architecture: HPS
+	Rep_Grad: False
+	Multi_Input: True
+	Seed: 0
+	Device: cuda:0
+MoDo Configuration:
+	weighting: MoDo
+	gamma_modo: 0.001
+	rho_modo: 0.1
+	modo_gn: none
+	three_grad: False
+Optimizer Configuration:
+	optim: adam
+	lr: 0.0001
+	weight_decay: 1e-05
+========================================
+Total Params: 11487901
+Trainable Params: 11487901
+Non-trainable Params: 0
+========================================
+LOG FORMAT | amazon_LOSS Acc | dslr_LOSS Acc | webcam_LOSS Acc | TIME
+Epoch: 0000 | TRAIN: 2.1739 0.5343 | 1.3633 0.8320 | 1.5016 0.7819 | Time: 117.3627 | VAL: 1.4361 0.7754 | 0.8976 1.0000 | 0.9766 0.9396 | Time: 2.4302 | TEST: 1.4466 0.7761 | 0.9666 0.9508 | 1.0893 0.9500 | Time: 2.8622
+Epoch: 0001 | TRAIN: 0.9022 0.8840 | 0.2727 1.0000 | 0.3309 0.9997 | Time: 116.7604 | VAL: 1.0283 0.8170 | 0.6310 1.0000 | 0.6399 0.9732 | Time: 2.4116 | TEST: 1.0433 0.8274 | 0.6990 0.9590 | 0.7280 0.9556 | Time: 2.8497

@@ -59,6 +59,8 @@ _parser.add_argument('--gamma_modo', type=float, default=0.1, help='learning rat
 _parser.add_argument('--rho_modo', type=float, default=0.1, help='regularization parameter')
 _parser.add_argument('--modo_gn', default='none', type=str, 
                     help='type of gradient normalization for MoDo, option: l2, none, loss, loss+')
+_parser.add_argument('--three_grad', action='store_true', default=False,
+                    help='implement three indep. gradients update version of MoDo')
 ## ITL
 _parser.add_argument('--task_idx', type=int, default=0, help='task index for dedicated learning')
 
@@ -145,6 +147,10 @@ def prepare_args(params):
                     kwargs['weight_args']['modo_gn'] = params.modo_gn
                 else:
                     raise ValueError('No support modo_gn {} for MoDo'.format(params.modo_gn)) 
+                if params.three_grad:
+                    kwargs['weight_args']['three_grad'] = True
+                else:
+                    kwargs['weight_args']['three_grad'] = False
             else:
                 raise ValueError('MoDo needs gamma_modo, rho_modo, and modo_gn')
         elif params.weighting in ['ITL']: # TODO: Handle input preference weights

@@ -1,0 +1,21 @@
+========================================
+General Configuration:
+	Wighting: EW
+	Architecture: HPS
+	Rep_Grad: False
+	Multi_Input: True
+	Seed: 0
+	Device: cuda:0
+EW Configuration:
+	weighting: EW
+Optimizer Configuration:
+	optim: adam
+	lr: 0.0001
+	weight_decay: 0.001
+========================================
+Total Params: 11487901
+Trainable Params: 11487901
+Non-trainable Params: 0
+========================================
+LOG FORMAT | amazon_LOSS Acc | dslr_LOSS Acc | webcam_LOSS Acc | TIME
+Epoch: 0000 | TRAIN: 2.7300 0.3486 | 1.9417 0.6983 | 2.0689 0.6220 | Time: 28.5702 | VAL: 1.9716 0.6902 | 1.4386 0.9101 | 1.4714 0.8792 | Time: 2.4501 | TEST: 1.9683 0.6923 | 1.4691 0.8770 | 1.5319 0.8722 | Time: 2.8745

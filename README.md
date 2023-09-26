@@ -4,7 +4,7 @@ Experiments for generalization in MOO, and introducing MoDo, updated MoCo.
 
 ## LiBMTL
 
-This folder contains the framework to run complex/real world MTL tasks. The framework contains five tasks: nyu, office-31, office-home, qm9, xtreme datasets. Currently, MoDo and MoCo is implemented for office-31 and office-home tasks. The code to run each task can be found in directory `LibMTL/LiBMTL/examples/<Task>`. The specifics on how to run are described in the README in respective task folders. 
+This folder contains the framework to run complex/real world MTL tasks from [LibMTL](https://github.com/median-research-group/LibMTL). The framework contains five tasks: nyu, office-31, office-home, qm9, xtreme datasets. Currently, MoDo and MoCo is implemented for office-31 and office-home tasks. The code to run each task can be found in directory `LibMTL/LiBMTL/examples/<Task>`. The specifics on how to run are described in the README in respective task folders. 
 
 To run an experiment with MoDo, navigate to `LibMTL/LiBMTL/examples/office`, and run
 

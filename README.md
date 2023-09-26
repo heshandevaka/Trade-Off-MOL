@@ -1,4 +1,4 @@
-# Generalization in Multi-objective Optimization (MOO)
+# Trade off in Multi-objective Learning
 
 Experiments for generalization in MOO, and introducing MoDo, updated MoCo.
 

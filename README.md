@@ -12,7 +12,7 @@ To run an experiment with MoDo, navigate to `LibMTL/LiBMTL/examples/office`, and
 python train_office.py --multi_input --dataset_path office-31 --weighting MoDo
 ```
 
-To check the hyper-parameters and methods allowed (e.g. MoCo, MoDo), run
+To check the hyper-parameters and methods allowed (e.g. MoDo), run
 
 ```shell
 python train_office.py -h
@@ -20,7 +20,7 @@ python train_office.py -h
 
 ## Toy-MNIST
 
-This folder contains the toy MOO task designed using multiple loss functions applied to a multi-layer perceptron (MLP) for learning to classify the MNIST dataset. The code structure is simpler compared to the LibMTL framework, although similar in implementation. Currently the code is designed to use three loss functions: coress-entropy loss, l1-loss, and hinge-loss. The training logs of this task report overall classification accuracy, per objective loss, and Pareto stationarity measure for train, test and validation datasets.
+This folder contains the toy MOO task designed using multiple loss functions applied to a multi-layer perceptron (MLP) for learning to classify the MNIST dataset. The code structure is simpler compared to the LibMTL framework, although similar in implementation. Currently the code is designed to use three loss functions: coress-entropy loss, mean square error (MSE) loss, and Huber loss. The training logs of this task report overall classification accuracy, per objective loss, and Pareto stationarity measure for train, test and validation datasets.
 
 To run an experiment with MoDo, navigate to `Toy-MNIST`, and run
 
@@ -28,7 +28,7 @@ To run an experiment with MoDo, navigate to `Toy-MNIST`, and run
 python toy.py --moo_method MoDo
 ```
 
-To check the hyper-parameters and methods allowed (e.g. MoCo, MoDo), run
+To check the hyper-parameters and methods allowed (e.g. MoDo), run
 
 ```shell
 python toy.py -h

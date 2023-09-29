@@ -1,6 +1,6 @@
 # Trade off in Multi-objective Learning
 
-Experiments for generalization in MOO, and introducing MoDo, updated MoCo.
+Experiments for generalization in MOO, and introducing [MoDo](https://arxiv.org/pdf/2305.20057.pdf), updated [MoCo](https://arxiv.org/pdf/2210.12624.pdf).
 
 ## LiBMTL
 

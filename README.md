@@ -1,6 +1,6 @@
 # Trade off in Multi-objective Learning
 
-Experiments on trade-off between optimization, generalization and conflict aversion in multi-objective learning (MOL), and introducing [MoDo](https://arxiv.org/pdf/2305.20057.pdf).
+Experiments on trade-off among optimization, generalization and conflict aversion in multi-objective learning (MOL), and introducing [MoDo](https://arxiv.org/pdf/2305.20057.pdf).
 
 <p align="center">
 <img width="900" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/b84fdf81-2e95-479f-b874-c5394af34d50">

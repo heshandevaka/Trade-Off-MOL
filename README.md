@@ -45,7 +45,7 @@ python toy.py -h
 
 ## Toy
 
-This folder contains the toy MOO task designed using explicitly defining two objectives $f_1(x)$ and $f_2(x)$. To create a mock empirical data set, we sample $n$ data points $\{z_i\}$ from a zero mean normal distribution. We set the population objectives to be the original objectives $f_1(x) and $f_2(x)$, and construct the corresponding empirical datasets as $f_1(x) +  \bar{z}^\top x$ and $f_2(x) + \bar{z}^\top x $, respectively, where $\bar{z}$ is the mean of the datapoints $z_i$. A stochastic sample of the objectives are then defined as $f_1(x) +  z_i^\top x$ and $f_2(x) + z_i^\top x $, for some $i\in[n]$. Experimanets are run to see how well the algorithms perform in the stochastic setting in terms of achieving Pareto optimality with respect to the population objective.
+This folder contains the toy MOO task designed using explicitly defining two objectives $f_1(x)$ and $f_2(x)$, which is inspired by prior work [CAGrad](https://github.com/Cranial-XIX/CAGrad). To create a mock empirical data set, we sample $n$ data points $\{z_i\}$ from a zero mean normal distribution. We set the population objectives to be the original objectives $f_1(x)$ and $f_2(x)$, and construct the corresponding empirical datasets as $f_1(x) +  \bar{z}^\top x$ and $f_2(x) + \bar{z}^\top x $, respectively, where $\bar{z}$ is the mean of the datapoints $z_i$. A stochastic sample of the objectives are then defined as $f_1(x) +  z_i^\top x$ and $f_2(x) + z_i^\top x $, for some $i\in[n]$. Experimanets are run to see how well the algorithms perform in the stochastic setting in terms of achieving Pareto optimality with respect to the population objective.
 
 To run an experiment with the toy objectives, navigate to `Toy`, and run
 

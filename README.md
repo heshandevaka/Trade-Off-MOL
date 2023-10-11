@@ -1,5 +1,57 @@
 # Trade off in Multi-objective Learning
 
+
+
+This repository contains the code for experiments of the paper: "Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance".
+
+In this work, we study the optimization, generalization, and conflict avoidance in stochastic multi-objective learning (MOL), with an instantiation of the proposed Multi-objective gradient with Double sampling (MoDo) algorithm.
+
+MoDo is a variant of the stochastic MGDA method, with double sampling to mitigate gradient bias.
+
+
+## Installation
+
+1. Use the following command to install the dependencies
+```
+conda create -n moo python=3.8
+conda activate moo
+conda install pytorch torchvision==0.9.0 torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install numpy scipy seaborn tqdm
+conda install -c conda-forge cvxpy
+```
+2. Install LibMTL
+
+```
+cd LibMTL
+pip install -e .
+```
+
+
+
+## License
+
+MIT license
+
+## Citation
+
+```
+@article{chen2023three,
+  title={Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance},
+  author={Chen, Lisha and Fernando, Heshan and Ying, Yiming and Chen, Tianyi},
+  journal={arXiv preprint arXiv:2305.20057},
+  year={2023}
+}
+```
+
+
+
+## Ackowledgement
+
+- The Multi-Task Learning (MTL) benchmark experiments use [LibMTL](https://github.com/median-research-group/LibMTL).
+- The nonconvex toy experiment is modified from the toy example in [CAGrad](https://github.com/Cranial-XIX/CAGrad).
+
+We thank the authors for providing the code and data. Please cite their works and ours if you use the code or data.
+
 Experiments on trade-off among optimization, generalization and conflict aversion in multi-objective learning (MOL), and introducing [MoDo](https://arxiv.org/pdf/2305.20057.pdf).
 
 <p align="center">

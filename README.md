@@ -35,10 +35,10 @@ MIT license
 ## Citation
 
 ```
-@article{chen2023three,
+@inproceedings{chen2023three,
   title={Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance},
   author={Chen, Lisha and Fernando, Heshan and Ying, Yiming and Chen, Tianyi},
-  journal={arXiv preprint arXiv:2305.20057},
+  booktitle={Advances in Neural Information Processing Systems},
   year={2023}
 }
 ```
@@ -52,7 +52,9 @@ MIT license
 
 We thank the authors for providing the code and data. Please cite their works and ours if you use the code or data.
 
-Experiments on trade-off among optimization, generalization and conflict aversion in multi-objective learning (MOL), and introducing [MoDo](https://arxiv.org/pdf/2305.20057.pdf).
+## Instructions
+
+Experiments on trade-off among optimization, generalization and conflict aversion in multi-objective learning (MOL), and introducing [MoDo algorithm](https://arxiv.org/pdf/2305.20057.pdf).
 
 <p align="center">
 <img width="900" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/b84fdf81-2e95-479f-b874-c5394af34d50">

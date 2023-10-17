@@ -1,5 +1,11 @@
 # Trade off in Multi-objective Learning
 
+This repository contains the code for experiments of the paper: ["Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance"](https://arxiv.org/pdf/2305.20057.pdf).
+
+In this work, we study the optimization, generalization, and conflict avoidance in stochastic multi-objective learning (MOL), with an instantiation of the proposed Multi-objective gradient with Double sampling (MoDo) algorithm.
+
+MoDo is a variant of the stochastic MGDA method, with double sampling to mitigate gradient bias.
+
 <p align="center">
 <img width="900" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/b84fdf81-2e95-479f-b874-c5394af34d50">
 </p>
@@ -9,11 +15,7 @@
 </p>
 
 
-This repository contains the code for experiments of the paper: ["Three-Way Trade-Off in Multi-Objective Learning: Optimization, Generalization and Conflict-Avoidance"](https://arxiv.org/pdf/2305.20057.pdf).
 
-In this work, we study the optimization, generalization, and conflict avoidance in stochastic multi-objective learning (MOL), with an instantiation of the proposed Multi-objective gradient with Double sampling (MoDo) algorithm.
-
-MoDo is a variant of the stochastic MGDA method, with double sampling to mitigate gradient bias.
 
 
 # Environemnt setup

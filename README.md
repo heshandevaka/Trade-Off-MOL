@@ -7,18 +7,18 @@ In this work, we study the optimization, generalization, and conflict avoidance 
 MoDo is a variant of the stochastic MGDA method, with double sampling to mitigate gradient bias.
 
 <p align="center">
-<img width="900" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/b84fdf81-2e95-479f-b874-c5394af34d50">
+<img width="800" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/b84fdf81-2e95-479f-b874-c5394af34d50">
 </p>
 
 <p align="center">
-<img width="785" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/c75cb5cd-2df6-4cb0-8dde-9733b1452cfb)">
+<img width="750" alt="desc_space" src="https://github.com/heshandevaka/Trade-Off-MOL/assets/96305785/c75cb5cd-2df6-4cb0-8dde-9733b1452cfb)">
 </p>
 
 
 
 
 
-# Environemnt setup
+# Environment setup
 
 1. Use the following command to install the dependencies
 ```
